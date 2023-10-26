@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <!-- Jquery installation -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"
+    ></script>
+    <!-- Load header file -->
+    <script> 
+        $(document).ready(function(){
+            $("div#header").load("./header.html");
+            $("div#footer").load("./footer.html");
+        });
+        function myFunction() {
+            alert("Form submitted");
+        }
+    </script> 
+</head>
+<body>
+    <div id="header"></div>
+
+    <main>
+
+    </main>
+
+    <div id="footer"></div>
+</body>
+</html>
