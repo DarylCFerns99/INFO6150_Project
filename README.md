@@ -25,6 +25,7 @@
             <li><strong>Carousel</strong> - Used to display an image gallery on the login and register page</li>
             <li><strong>Toasts</strong> - Used to display a notification if the login/registration is successful or not</li>
             <li><strong>Spinner</strong> - Used to display an spinner(loading icon) once the login/register button is clicked</li>
+            <li><strong>Form Control</strong> - Used for various input, select, options and form groups elements.</li>
         </ul>
     </li>
     <li>
