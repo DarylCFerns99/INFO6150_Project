@@ -15,7 +15,7 @@
         </ul>
     </li>
     <li>
-        <h3>Abhishek Unnithan</h3>
+        <h3>Abhishek Unnithan (002839036)</h3>
         <p>Worked on developing the map, description page of the webpage</p>
         <ul>
             <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
