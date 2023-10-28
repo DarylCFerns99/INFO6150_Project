@@ -34,6 +34,7 @@
             <h3 class="">About</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quas et ipsum nisi autem. Dolore, sint voluptate! Est molestias iste reprehenderit quis incidunt, inventore repellendus quidem deserunt enim vitae eius.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga commodi, labore assumenda alias illo consequuntur asperiores inventore ullam dignissimos vero!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque, tempora reiciendis dolore iste harum ullam in sint possimus tempore aliquid minima aut odit, omnis perspiciatis autem ex praesentium provident velit cum eum exercitationem nemo cupiditate id. Ullam sint eveniet facere sapiente quae, quis ea deserunt fugiat aut recusandae laborum commodi magnam asperiores deleniti esse quia itaque aspernatur eos magni.</p>
         </div>
         <div class="container d-flex justify-content-center align-items-center flex-column p-0 mt-4">
             <h3 class="">Team</h3>
@@ -49,9 +50,9 @@
         $(document).ready(() => {
             let team = [
                 {name: "Daryl Fernandes", img: "./assets/profile/daryl.jpg", desc: "Experienced software engineer with a strong work ethic with 2 years of experience in developing full stack applications using React.JS, Python, and SQL database. Knowledge of the software development lifecycle and project management from ideation to completion. Experienced in testing, debugging and documenting the applications. Creating an environment in which the development, quality assurance, staging and production work can proceed efficiently.", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
-                {name: "Anirudha Dudhasagare", img: "./assets/profile/anirudha.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
-                {name: "Jovin Nicholas", img: "./assets/profile/jovin.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
-                {name: "Abhishek Unnithan", img: "./assets/profile/abhishek.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
+                {name: "Anirudha Dudhasagare", img: "./assets/profile/anirudha.jpg", desc: "I have hands on experience on Frontend Technologies such as HTML, CSS, ReactJS, TailwindCSS and Bootstrap and Backend technologies such as ASP .NET(MVC), SQL, MongoDB, Express and NodeJs.", linkedin: "https://www.linkedin.com/in/anirudha97/", github: "https://github.com/Anirudha5997", "file-earmark-text-fill": "./assets/profile/anirudha.pdf", telephone: "tel:(857) 334-5713", envelope: "mailto:dudhasagare.a@northeastern.edu"},
+                {name: "Jovin Nicholas", img: "./assets/profile/jovin.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/jovin-nicholas-6352b0152/", github: "https://github.com/jovin-nicholas", "file-earmark-text-fill": "./assets/profile/jovin.pdf", telephone: "tel:(857) 693-1633", envelope: "mailto:nicholas.jo@northeastern.edu"},
+                {name: "Abhishek Unnithan", img: "./assets/profile/abhishek.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/abhishek-unnithan-095284185/", github: "https://github.com/abhishek98-force", "file-earmark-text-fill": "./assets/profile/abhishek.pdf", telephone: "tel:(857) 350-2419", envelope: "mailto:gopalakrishnanunni@northeastern.edu"},
             ];
             let teamContainer = document.getElementById("team");
 
@@ -102,8 +103,7 @@
                 let cardDescription = document.createElement("p");
                 attributes = {
                     "id": "description",
-                    "class": "card-text",
-                    "aria-expanded": "false"
+                    "class": "card-text collapse mb-0",
                 };
                 cardDescription.innerHTML = `${person.desc}`
                 setAttributes(cardDescription, attributes);
@@ -112,9 +112,9 @@
                 let cardDescriptionReadMore = document.createElement("a");
                 attributes = {
                     "role": "button",
-                    "class": "collapsed",
-                    "data-toggle": "card-text",
-                    "href": "#description", 
+                    "class": "link-info",
+                    "data-bs-toggle": "collapse",
+                    "href": "#description",
                     "aria-expanded": "false",
                     "aria-controls": "description"
                 }

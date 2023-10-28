@@ -65,7 +65,7 @@
             // Check active url
             let navItems = document.getElementsByClassName("nav-link");
             Array.from(navItems).forEach(ele => {
-                if (ele.href === window.location.href) {
+                if (window.location.href.includes(ele.href)) {
                     ele.setAttribute("class", "nav-link active");
                 } else {
                     ele.setAttribute("class", "nav-link");

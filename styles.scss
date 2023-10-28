@@ -1,22 +1,23 @@
-// @import "variables";
-
-// #about {
-//     .card {
-//         &-text:not(.show) {
-//             display: block;
-//             height: 3rem;
-//             overflow: hidden;
-//         }
-//         &-body {
-//             a.collapsed::after {
-//                 content: "+ Show More";
-//             }
-//             a:not(.collapsed)::after {
-//                 content: "- Show Less";
-//             }
-//         }
-//         &-text.collapsing {
-//             height: 3rem;
-//         }
-//     }
-// }
+#about {
+    .card {
+        &-text:not(.show) {
+            display: block;
+            height: 3rem;
+            overflow: hidden;
+        }
+        &-body {
+            a.collapsed::after {
+                content: "+ Show More";
+            }
+            a:not(.collapsed)::after {
+                content: "- Show Less";
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+        &-text.collapsing {
+            height: 3rem;
+        }
+    }
+}
