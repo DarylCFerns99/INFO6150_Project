@@ -1,0 +1,46 @@
+.accordion-button{
+    background : #e32424a6;
+}
+
+body{
+	background-color: #fff;
+}
+.container{
+	background-color: #fff;
+}
+.card{
+	width: 250px;
+	box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+	border-radius: 8px;
+}
+.maintxt{
+	color: #1f1f1f;
+	font-weight: 500;
+	font-size: 14.5px;
+}
+.name{
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+}
+.para{
+	color: #8c8c8c;
+	font-size: 12px;
+	position: relative;
+	bottom: 3px;
+}
+.container-review{
+    display:flex;
+    justify-content : space-around;
+}
+
+
+@media (max-width: 768px) {
+	.container-review {
+		flex-direction: column;
+	}
+}
+
+.align-items-center{
+	text-align:right;
+}
