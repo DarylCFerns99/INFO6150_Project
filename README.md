@@ -1,6 +1,9 @@
 # INFO6150_Project
-<h3>Restaurant Health code review dashboard</h3>
+<h3>SafeDine:Restaurant Safety Companion</h3>
 <p>The goal of this webpage is to provide the user with the health code violations data of the restaurant. Every restaurant goes through multiple health checks, as a result of these checks the restaurants are then provided with a detailed inspection violations. This website will help a user by providing those information at a glance.</p>
+
+<h3>Instructions to run the web app</h3>
+<p>Open index.html in vscode. Use the go live extension on vscode to run the web app.  </p>
 
 <h3>Team members and their role:</h3>
 <ol>
