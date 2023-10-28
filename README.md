@@ -5,10 +5,10 @@
 <h3>Team members and their role:</h3>
 <ol>
     <li>
-        <h3>Jovin Nicholas</h3>
+        <h3>Jovin Nicholas (002822737)</h3>
         <p>Worked on developing the home page of the webpage</p>
         <ul>
-            <li><strong>Grid</strong> - Used to display the location dropdown and search bar</li>
+            <li><strong>Grid</strong> - Used to display the search</li>
             <li><strong>Tabs</strong> - Used to display multiple tabs for dine in, takeout and groceries</li>
             <li><strong>Image</strong> - Used to display images on card layout</li>
             <li><strong>Badge</strong> - Used to display safety rating and customer review</li>
