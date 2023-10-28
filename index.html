@@ -13,6 +13,8 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="home-style.css">
+    <script src="bodyLogic.js"></script>
     <!-- Load header file -->
     <script> 
         $(document).ready(function(){
@@ -28,6 +30,55 @@
     <div id="header"></div>
 
     <main>
+
+        <section id="dropandsearch">
+            <form class="form-inline" style="text-align:center; margin-top:50px;">
+                <div class="form-group">
+                    <div class="dropdown" style="display:inline-block;">
+                        <button class="btn btn-outline-success dropdown-toggle customPlaceButton" type="button" data-toggle="dropdown">
+                            <span style="color:lightgray">Location</span>
+                        <span class="caret" style="color:lightgray"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Allston</a></li>
+                          <li><a href="#">Black Bay</a></li>
+                          <li><a href="#">Boston</a></li>
+                          <li><a href="#">Boston/China Town</a></li>
+                          <li><a href="#">Brighton</a></li>
+                        </ul>
+                    </div>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 customPlaceButton" type="submit">Search</button>
+                </div>
+              </form>
+              <div class="container mt-4 " style="margin-top:50px;">
+                <div class="text-center mb-4" >
+                    <!-- <button class="btn btn-primary" onclick="toggleSections()">Toggle Sections</button> -->
+                    <label class="switch">
+                        <input type="checkbox" id="toggleSections">
+                        <span class="slider round"></span>
+                      </label>
+                </div>
+        
+                <div id="mapSection" style="display: none; text-align:center;">
+                    <!-- Your map section content here -->
+                    <h2>Map Section</h2>
+                    <p>This is the map section.</p>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1gGljHt5a2e0WBz353cV2C9P8tGSK1ig&ehbc=2E312F" width="640" height="480"></iframe>
+                </div>
+        
+                <div id="cardSection" style="display: block;">
+                    <!-- Your card section content here -->
+                    <h2>Card Section</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
