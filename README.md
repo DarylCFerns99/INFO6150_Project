@@ -20,9 +20,9 @@
         <ul>
             <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
             <li><strong>Maps</strong> - Used to display the location of restaurants on a map</li>
-            <li><strong>Form</strong> - Used to wrap the search and the dropdown component</li>
+            <li><strong>Form</strong> - Used to wrap the search and the search button component</li>
             <li><strong>Search</strong> - Used to create an input field for filtering the restaurants</li>
-            <li><strong>Dropdown</strong> - Used to create a dropdown selection to filter based on area</li>
+            <li><strong>ProgressBar</strong> - Used to create the review section bar for the reviews</li>
         </ul>
     </li>
     <li>
