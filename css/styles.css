@@ -10,4 +10,22 @@
 
 .tab-pane .col {
   padding: 16px;
+}
+
+#about .card-text:not(.show) {
+  display: block;
+  height: 3rem;
+  overflow: hidden;
+}
+#about .card-body a.collapsed::after {
+  content: "+ Show More";
+}
+#about .card-body a:not(.collapsed)::after {
+  content: "- Show Less";
+}
+#about .card-body a {
+  text-decoration: none;
+}
+#about .card-text.collapsing {
+  height: 3rem;
 }/*# sourceMappingURL=styles.css.map */
