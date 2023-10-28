@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
+    <link rel="stylesheet" href="./css/styles.css" />
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- Jquery installation -->
     <script
@@ -27,10 +29,138 @@
 <body>
     <div id="header"></div>
 
-    <main>
-        about
+    <main id="about" class="container-fluid mt-md-4 mb-md-4 mt-sm-1 mb-sm-1">
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <h3 class="">About</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quas et ipsum nisi autem. Dolore, sint voluptate! Est molestias iste reprehenderit quis incidunt, inventore repellendus quidem deserunt enim vitae eius.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga commodi, labore assumenda alias illo consequuntur asperiores inventore ullam dignissimos vero!</p>
+        </div>
+        <div class="container d-flex justify-content-center align-items-center flex-column p-0 mt-4">
+            <h3 class="">Team</h3>
+            <div id="team" class="row g-4 m-0 justify-content-center">
+            </div>
     </main>
 
     <div id="footer"></div>
+
+    <script>
+        const setAttributes = (element, attrs) => Object.keys(attrs)?.forEach((key) => element.setAttribute(key, attrs[key]));
+
+        $(document).ready(() => {
+            let team = [
+                {name: "Daryl Fernandes", img: "./assets/profile/daryl.jpg", desc: "Experienced software engineer with a strong work ethic with 2 years of experience in developing full stack applications using React.JS, Python, and SQL database. Knowledge of the software development lifecycle and project management from ideation to completion. Experienced in testing, debugging and documenting the applications. Creating an environment in which the development, quality assurance, staging and production work can proceed efficiently.", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
+                {name: "Anirudha Dudhasagare", img: "./assets/profile/anirudha.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
+                {name: "Jovin Nicholas", img: "./assets/profile/jovin.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
+                {name: "Abhishek Unnithan", img: "./assets/profile/abhishek.jpg", desc: "as", linkedin: "https://www.linkedin.com/in/darylfernandes50/", github: "https://github.com/DarylCFerns99", "file-earmark-text-fill": "./assets/profile/daryl.pdf", telephone: "tel:(857) 334-1383", envelope: "mailto:fernandes.dar@northeastern.edu"},
+            ];
+            let teamContainer = document.getElementById("team");
+
+            team.forEach((person) => {
+                // Column div
+                let cardContainer = document.createElement("div");
+                let attributes = {
+                    "class": "d-flex col-md-6 col-lg-4 col-xl-3"
+                };
+                setAttributes(cardContainer, attributes);
+
+                // Card div
+                let card = document.createElement("div");
+                attributes = {
+                    "id": person.name,
+                    "class": "card align-self-stretch",
+                    // "style": "width: clamp(100px, 100%, 200px);"
+                    "style": "width: 100%;"
+                };
+                setAttributes(card, attributes);
+
+                // Card Image
+                let cardImg = document.createElement("img");
+                attributes = {
+                    "src": person.img,
+                    "alt": person.name,
+                    "class": "card-img-top m-auto rounded",
+                    "style": "width: clamp(100px, 50%, 200px);"
+                };
+                setAttributes(cardImg, attributes);
+                
+                // Card Body
+                let cardBody = document.createElement("div");
+                attributes = {
+                    "class": "card-body"
+                };
+                setAttributes(cardBody, attributes);
+
+                // Card header
+                let cardHeader = document.createElement("h5");
+                attributes = {
+                    "class": "card-title",
+                };
+                cardHeader.innerHTML = person.name
+                setAttributes(cardHeader, attributes);
+
+                // Card description
+                let cardDescription = document.createElement("p");
+                attributes = {
+                    "id": "description",
+                    "class": "card-text",
+                    "aria-expanded": "false"
+                };
+                cardDescription.innerHTML = `${person.desc}`
+                setAttributes(cardDescription, attributes);
+
+                // Card read more desctiption
+                let cardDescriptionReadMore = document.createElement("a");
+                attributes = {
+                    "role": "button",
+                    "class": "collapsed",
+                    "data-toggle": "card-text",
+                    "href": "#description", 
+                    "aria-expanded": "false",
+                    "aria-controls": "description"
+                }
+                setAttributes(cardDescriptionReadMore, attributes);
+                
+                // Card socials
+                let cardSocials = document.createElement("div");
+                attributes = {
+                    "class": "d-flex justify-content-around align-items-center card-footer"
+                };
+                setAttributes(cardSocials, attributes);
+
+                // Card socials list
+                let socialsList = ["telephone", "envelope", "linkedin", "github", "file-earmark-text-fill"];
+                socialsList.forEach((social) => {
+                    let cardSocialAnchor = document.createElement("a");
+                    attributes = {
+                        "href": person[social],
+                        "target": "_blank"
+                    }
+                    if (social.includes("file")) {
+                        attributes["download"] = `${person.name.replace(" ", "_")}_Resume`;
+                    }
+                    setAttributes(cardSocialAnchor, attributes);
+
+                    let cardSocial = document.createElement("i");
+                    attributes = {
+                        "class": `bi bi-${social}`
+                    }
+                    setAttributes(cardSocial, attributes);
+
+                    cardSocialAnchor.appendChild(cardSocial);
+                    cardSocials.appendChild(cardSocialAnchor);
+                });
+
+                cardBody.appendChild(cardHeader);
+                cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardDescriptionReadMore);
+
+                card.appendChild(cardImg);
+                card.appendChild(cardBody);
+                card.appendChild(cardSocials);
+                cardContainer.appendChild(card);
+                teamContainer.appendChild(cardContainer);
+            });
+        });
+    </script>
 </body>
 </html>
