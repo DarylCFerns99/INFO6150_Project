@@ -26,7 +26,7 @@
         </ul>
     </li>
     <li>
-        <h3>Anirudha Dudhasagare</h3>
+        <h3>Anirudha Dudhasagare (002697516)</h3>
         <p>Worked on developing the login, register pages of the webpage</p>
         <ul>
             <li><strong>Carousel</strong> - Used to display an image gallery on the login and register page</li>
@@ -36,7 +36,7 @@
         </ul>
     </li>
     <li>
-        <h3>Daryl Fernandes</h3>
+        <h3>Daryl Fernandes (002834250)</h3>
         <p>Worked on developing the about, header and footer of the webpage</p>
         <h4>Boostrap components used:</h4>
         <ul>
