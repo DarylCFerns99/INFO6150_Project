@@ -1,3 +1,25 @@
+
+// root {
+//     $color-default: #212529;
+//     $color-primary: #ce1212;
+//     $color-secondary: #37373f;
+// }
+
+.menu {
+    color: #212529;
+    .nav-link.active{
+        color: #ce1212;
+    }
+
+    .card-title{
+        overflow: clip;
+    }
+}
+
+.tab-pane .col{
+    padding: 16px;
+}
+
 #about {
     .card {
         &-text:not(.show) {
