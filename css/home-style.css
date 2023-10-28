@@ -95,11 +95,11 @@ body{
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #ce1212;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #ce1212;
   }
   
   input:checked + .slider:before {
@@ -229,4 +229,7 @@ body{
 /*--------------------------------------------------------------
 # Menu Section End
 --------------------------------------------------------------*/
-
+.map-styling{
+  width : 100%;
+  height : 550px;
+}
