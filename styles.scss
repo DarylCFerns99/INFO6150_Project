@@ -5,6 +5,12 @@
 //     $color-secondary: #37373f;
 // }
 
+#cardSection {
+    h5.card-title {
+        cursor: pointer;
+    }
+}
+
 .menu {
     color: #212529;
     .nav-link.active{

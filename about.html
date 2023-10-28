@@ -130,7 +130,8 @@
                     let cardSocialAnchor = document.createElement("a");
                     attributes = {
                         "href": person[social],
-                        "target": "_blank"
+                        "target": "_blank",
+                        "class": "btn btn-primary"
                     }
                     if (social.includes("file")) {
                         attributes["download"] = `${person.name.replace(" ", "_")}_Resume`;
