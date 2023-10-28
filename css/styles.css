@@ -1,0 +1,13 @@
+.menu {
+  color: #212529;
+}
+.menu .nav-link.active {
+  color: #ce1212;
+}
+.menu .card-title {
+  overflow: clip;
+}
+
+.tab-pane .col {
+  padding: 16px;
+}/*# sourceMappingURL=styles.css.map */
