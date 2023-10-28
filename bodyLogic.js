@@ -12,4 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cardSection.style.display = 'block';
         }
     });
-    });
+});
+
+const openDescription = (_event) => window.location.href='./description.html'
