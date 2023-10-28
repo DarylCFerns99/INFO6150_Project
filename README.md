@@ -11,7 +11,7 @@
             <li><strong>Grid</strong> - Used to display the location dropdown and search bar</li>
             <li><strong>Tabs</strong> - Used to display multiple tabs for dine in, takeout and groceries</li>
             <li><strong>Image</strong> - Used to display images on card layout</li>
-            <li><strong>Badge</strong> - Used to displaay safety rating and customer review</li>
+            <li><strong>Badge</strong> - Used to display safety rating and customer review</li>
         </ul>
     </li>
     <li>
