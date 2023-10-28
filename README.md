@@ -1,2 +1,41 @@
 # INFO6150_Project
-Restaurant Health code review dashboard
+<h3>Restaurant Health code review dashboard</h3>
+<p>The goal of this webpage is to provide the user with the health code violations data of the restaurant. Every restaurant goes through multiple health checks, as a result of these checks the restaurants are then provided with a detailed inspection violations. This website will help a user by providing those information at a glance.</p>
+
+<h3>Team members and their role:</h3>
+<ol>
+    <li>
+        <h3>Jovin Nicholas</h3>
+        <p>Worked on developing the home page of the webpage</p>
+        <ul>
+            <li><strong>Grid</strong> - Used to display the location dropdown and search bar</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Abhishek Unnithan</h3>
+        <p>Worked on developing the map, description page of the webpage</p>
+        <ul>
+            <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Anirudha Dudhasagare</h3>
+        <p>Worked on developing the login, register pages of the webpage</p>
+        <ul>
+            <li><strong>Carousel</strong> - Used to display an image gallery on the login and register page</li>
+            <li><strong>Toasts</strong> - Used to display a notification if the login/registration is successful or not</li>
+            <li><strong>Spinner</strong> - Used to display an spinner(loading icon) once the login/register button is clicked</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Daryl Fernandes</h3>
+        <p>Worked on developing the about, header and footer of the webpage</p>
+        <h4>Boostrap components used:</h4>
+        <ul>
+            <li><strong>Card</strong> - Used to display individual team members relvant data</li>
+            <li><strong>Navbar</strong> - Used to create the header section of the webpage</li>
+            <li><strong>Collapse</strong> - Used to show/hide long description</li>
+            <li><strong>Button</strong> - Used as hyperlinks to members social site</li>
+        </ul>
+    </li>
+</ol>
