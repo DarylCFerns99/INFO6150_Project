@@ -5,6 +5,8 @@
 //     $color-secondary: #37373f;
 // }
 
+$primary-color : #ce1212;
+
 #cardSection {
     h5.card-title {
         cursor: pointer;
@@ -14,7 +16,7 @@
 .menu {
     color: #212529;
     .nav-link.active{
-        color: #ce1212;
+        color: $primary-color;
     }
 
     .card-title{

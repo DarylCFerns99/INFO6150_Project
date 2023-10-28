@@ -16,6 +16,7 @@
         <p>Worked on developing the map, description page of the webpage</p>
         <ul>
             <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
+            <li><strong>Maps</strong> - Used to display the location of restaurants on a map</li>
         </ul>
     </li>
     <li>
