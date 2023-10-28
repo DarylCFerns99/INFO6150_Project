@@ -9,6 +9,9 @@
         <p>Worked on developing the home page of the webpage</p>
         <ul>
             <li><strong>Grid</strong> - Used to display the location dropdown and search bar</li>
+            <li><strong>Tabs</strong> - Used to display multiple tabs for dine in, takeout and groceries</li>
+            <li><strong>Image</strong> - Used to display images on card layout</li>
+            <li><strong>Badge</strong> - Used to display safety rating and customer review</li>
         </ul>
     </li>
     <li>
@@ -17,6 +20,9 @@
         <ul>
             <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
             <li><strong>Maps</strong> - Used to display the location of restaurants on a map</li>
+            <li><strong>Form</strong> - Used to wrap the search and the dropdown component</li>
+            <li><strong>Search</strong> - Used to create an input field for filtering the restaurants</li>
+            <li><strong>Dropdown</strong> - Used to create a dropdown selection to filter based on area</li>
         </ul>
     </li>
     <li>
@@ -26,6 +32,7 @@
             <li><strong>Carousel</strong> - Used to display an image gallery on the login and register page</li>
             <li><strong>Toasts</strong> - Used to display a notification if the login/registration is successful or not</li>
             <li><strong>Spinner</strong> - Used to display an spinner(loading icon) once the login/register button is clicked</li>
+            <li><strong>Form Control</strong> - Used for various input, select, options and form groups elements.</li>
         </ul>
     </li>
     <li>
