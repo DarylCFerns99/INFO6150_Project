@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Description</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><!-- Bootstrap Font Icon CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery 3.6.0 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper -->
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/description-style.css">
     <!-- Jquery installation -->
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -27,11 +31,183 @@
     </script> 
 </head>
 <body>
-    <div id="header"></div>
-
-    <main>
-
-    </main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="./resources/restaurent.jpg" class="img-fluid" alt="Restaurant Image">
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <h2>Tasty Bites</h2>
+                <p>Tasty Bites is a cozy restaurant offering a wide range of delicious and freshly prepared
+                  dishes, combining flavors from around the world with a focus on local, seasonal ingredients.</p>
+              </div>
+              <div class="row">
+                <h4>Location Details</h4>
+                <p>Address: 456 Delicious Avenue, Cityville, Massachusetts, Zip Code: 02119</p>
+              </div>
+            </div>
+        </div>
+       
+        <div style="margin-top:50px;">  
+            <h4>Recent Violations</h4>
+            <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Expired Ingredients
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          The restaurant was found using expired ingredients in their dishes during a routine health inspection.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Poor Hygiene Practices
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          The restaurant staff was observed not following proper hygiene practices, leading to a risk of food contamination.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Inadequate Pest Control
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          The restaurant had issues with inadequate pest control, leading to the presence of pests in the kitchen area.
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+          <div style="margin-top:50px;">
+            <!-- <h4>Reviews</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Review 1</li>
+                <li class="list-group-item">Review 2</li>
+                <li class="list-group-item">Review 3</li>
+             
+            </ul> -->
+            <!-- <div class="container mt-5">
+              <div class="d-flex justify-content-center py-3">
+                
+                <div class="mr-2">
+                <div class="card">
+                <div class="px-2 py-2">
+                  <span class="maintxt">"Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore magna aliqua."</span>
+                  <div class="d-flex pt-3">
+                    <div><img src="https://i.imgur.com/hczKIze.jpg" width="50" class="rounded-circle"></div>
+                    <div class="ml-2">
+                      <span class="name">Dan Spratling</span>
+                        <p class="para">Company name</p>
+                    </div>
+                  </div>
+                
+            
+                  </div>
+                 </div>
+            
+            
+                 <div class="card mt-3">
+                <div class="px-2 py-2">
+                  <span class="maintxt">"Lorem ipsum dolor sit amet,consectetur adipiscing elit."</span>
+                  <div class="d-flex pt-3">
+                    <div><img src="https://i.imgur.com/hczKIze.jpg" width="50" class="rounded-circle"></div>
+                    <div class="ml-2">
+                      <span class="name">Dan Spratling</span>
+                        <p class="para">Company name</p>
+                    </div>
+                  </div>
+                
+            
+                  </div>
+              </div>
+            
+            
+            
+              </div>
+              <div class="ml-2">
+                
+                <div class="card">
+                <div class="px-2 py-2">
+                  <span class="maintxt">"Lorem ipsum dolor sit amet,consectetur adipiscing elit."</span>
+                  <div class="d-flex pt-3">
+                    <div><img src="https://i.imgur.com/hczKIze.jpg" width="50" class="rounded-circle"></div>
+                    <div class="ml-2">
+                      <span class="name">Dan Spratling</span>
+                        <p class="para">Company name</p>
+                    </div>
+                  </div>
+                
+            
+                  </div>
+              </div>
+            
+            
+              <div class="card mt-3">
+                <div class="px-2 py-2">
+                  <span class="maintxt">"Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore magna aliqua."</span>
+                  <div class="d-flex pt-3">
+                    <div></div>
+                    <div class="ml-2">
+                      <span class="name">Dan Spratling</span>
+                        <p class="para">Company name</p>
+                    </div>
+                  </div>
+                
+            
+                  </div>
+                 </div>
+            
+              </div>
+            
+            
+            
+              </div>
+              
+            </div> -->
+            <div class="container-review mt-5">
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Delicious Food and Great Service</h5>
+                <h6 class="card-subtitle mb-2 text-muted">John Doe</h6>
+                <p class="card-text">The food was absolutely delicious, and the service was excellent. I highly recommend this place to anyone looking for a fantastic dining experience.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Amazing Ambiance and Friendly Staff</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Jane Smith</h6>
+                <p class="card-text">The atmosphere of this restaurant is wonderful, and the staff is incredibly friendly and helpful. A great place for a relaxing evening out.</p>
+            </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+              <h5 class="card-title">Outstanding Culinary Experience</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Michael Johnson</h6>
+              <p class="card-text">I had an amazing culinary experience at this restaurant. The flavors were exceptional, and the presentation was top-notch. Definitely coming back for more!</p>
+          </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Great Food, Great Value</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Emily Brown</h6>
+            <p class="card-text">The food here is fantastic, and the prices are very reasonable for the quality. I left feeling satisfied and impressed. Will be returning soon!</p>
+        </div>
+    </div>
+          </div>
+        </div>  
+            </div>
 
     <div id="footer"></div>
 </body>
