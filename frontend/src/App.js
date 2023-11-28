@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom
 import './App.css';
 
 import Header from "./Components/Header/header";
-import GuestRoute from "./Route/guestRoute";
-import AdminRoute from "./Route/adminRoute";
+import GuestRoute from "./routes/guestRoute";
+import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
 
 function App() {
