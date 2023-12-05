@@ -1,11 +1,14 @@
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
 
-import './App.css';
+import "./App.styles.css"
 
 import Header from "./Components/Header/header";
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
+import Restaurant from "./Components/Restaurant/restaurant";
+
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
 	// Add routes to this object
@@ -16,27 +19,31 @@ function App() {
 	}
 
 	return (
+		<ChakraProvider>
 		<div className="App">
-			<div className="App" style={{width: `100vw`, height: `100vh`}}>
-				<Header />
+			<Header />
+			{/* <Restaurant/> */}
+				{/* <Header /> */}
 				<Router>
 					<Routes>
-						<Route index path="/" element={<Navigate to="/home" replace />}></Route>
-						<Route exact path="/login" element={<GuestRoute />}>
-							{/* <Route exact path="/login" element={<Login />} /> */}
-						</Route>
+						{/* <Route index path="/" element={<Navigate to="/home" replace />}></Route>
+						<Route exact path="/login" element={<GuestRoute />}> 
+							 <Route exact path="/login" element={<Login />} /> 
+					   </Route>
 						{
 							(Object.keys(routes) ?? []).map((ele, idx) => 
 								<Route exact path={ele} key={idx} element={<AdminRoute />}>
 									<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
 								</Route>
 							)
-						}
+						} */}
+						 <Route path="/restaurants/:id" element={<Restaurant />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</Router>
+			
 			</div>
-		</div>
+		</ChakraProvider>
 	);
 }
 

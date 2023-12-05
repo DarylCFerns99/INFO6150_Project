@@ -1,0 +1,10 @@
+.reviewCard {
+    width : 100%;
+    color : rgb(105, 105, 105);
+    border-bottom : 1px solid rgb(164, 164, 164);
+}
+
+.reviewHeader{
+    display : flex;
+    justify-content: space-between;
+}
