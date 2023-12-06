@@ -135,18 +135,13 @@ const data = {
 const initialState = {
     restaurants : [
         {
-           d : data
+           data
         }
     ]
 }
 
-const sampleReducer = (state = initialState, action) => {
+const restaurantReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actions.ADD_CURRENT_WEATHER_DATA: {
-            return ({
-                ...(action?.payload ?? {})
-            })
-        }
         case actions.ADD_ALL_RESTAURANTS: {
             return ({
                 ...(action?.payload ?? {})
@@ -157,4 +152,4 @@ const sampleReducer = (state = initialState, action) => {
     }
 }
 
-export default sampleReducer
+export default restaurantReducer
