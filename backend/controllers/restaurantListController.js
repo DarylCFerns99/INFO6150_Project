@@ -15,7 +15,7 @@ const getDineinRestaurants = router.get(
     });
 
     results = results.map((result) => {
-      const { licenseno, name, address, place_id, rating, takeout } = result;
+      const { licenseno, name, address, place_id, rating, takeout, photos } = result;
       return {
         licenseno: licenseno,
         place_id: place_id,
@@ -23,6 +23,7 @@ const getDineinRestaurants = router.get(
         address: address,
         rating: rating,
         takeout: takeout,
+        photos: photos[0],
       };
     });
     console.log(results);
@@ -40,13 +41,14 @@ const getDeliveryRestaturants = router.get(
     });
 
     results = results.map((result) => {
-      const { licenseno, name, address, place_id, rating } = result;
+      const { licenseno, name, address, place_id, rating, photos } = result;
       return {
         licenseno: licenseno,
         place_id: place_id,
         name: name,
         address: address,
         rating: rating,
+        photos: photos[0],
       };
     });
     console.log(results);
