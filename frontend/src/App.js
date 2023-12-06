@@ -7,6 +7,7 @@ import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
 import Restaurant from "./Components/Restaurant/restaurant";
+import Home from "./Components/Home/home";
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -37,7 +38,8 @@ function App() {
 								</Route>
 							)
 						} */}
-						 <Route path="/restaurants/:id" element={<Restaurant />} />
+						<Route path="/restaurants/restaurantsList" element={<Home />} />
+						<Route path="/restaurants/:id" element={<Restaurant />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</Router>
