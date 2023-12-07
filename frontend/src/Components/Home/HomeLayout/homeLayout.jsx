@@ -3,12 +3,12 @@ import { useMediaQuery } from 'react-responsive';
 import axios from "axios";
 
 import { SimpleGrid } from "@chakra-ui/react";
-
 import { Badge, Center, Image, Card, Text, Heading, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 //Import Font Awesome Components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 const HomeLayout = ({ type }) => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -34,7 +34,7 @@ const HomeLayout = ({ type }) => {
                 // setLoading(false);
             }
         };
-      
+
         fetchData(type);
     }, [type]);
 
@@ -49,10 +49,11 @@ const HomeLayout = ({ type }) => {
     };
 
     return (
-        <div bg="#F8F8FF">
+        <div>
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
+                        // <Link to={`/restaurant/${item.place_id}`}>
                         <Card
                             key={item.place_id}
                             p={2}
@@ -88,6 +89,7 @@ const HomeLayout = ({ type }) => {
                                 <Text noOfLines={2} mt={2} fontSize={{ base: 'md%', lg: 'l' }} mb="0">{item.address}</Text>
                             </CardBody>
                         </Card>
+                        // </Link>
                     ))}
             </SimpleGrid>
         </div>
