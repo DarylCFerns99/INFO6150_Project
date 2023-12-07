@@ -14,13 +14,13 @@ const TabOptions = () => {
                 <TabPanels>
                     <TabPanel>
                         <div>
-                            <HomeLayout />
+                            <HomeLayout type="Dining"/>
                         </div>
                     </TabPanel>
 
                     <TabPanel>
                         <div>
-                            <HomeLayout />
+                            <HomeLayout type="Delivery"/>
                         </div>
                     </TabPanel>
                 </TabPanels>
