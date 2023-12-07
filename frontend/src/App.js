@@ -7,7 +7,8 @@ import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
 import Restaurant from "./Components/Restaurant/restaurant";
-import Home from "./Components/Home/home";
+import HomeLayout from "./Components/Home/HomeLayout/homeLayout";
+import { useSelector } from "react-redux";
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -18,6 +19,8 @@ function App() {
 		'/home/:resaturant_id': <Header />,
 		'/home/:resaturant_id/menu': <Header />
 	}
+	const restaurants = useSelector((state) => state);
+
 
 	return (
 		<ChakraProvider>
@@ -38,8 +41,9 @@ function App() {
 								</Route>
 							)
 						} */}
-						<Route path="/restaurants/restaurantsList" element={<Home />} />
-						<Route path="/restaurants/:id" element={<Restaurant />} />
+					
+						 <Route path="/restaurant/:placeId" element={<Restaurant />} />
+						 <Route path="/Home" element = {<HomeLayout />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</Router>

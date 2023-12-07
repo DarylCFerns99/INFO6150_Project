@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import axios from "axios";
 
 import { SimpleGrid } from "@chakra-ui/react";
+
 import { Badge, Center, Image, Card, Text, Heading, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 //Import Font Awesome Components
@@ -33,7 +34,7 @@ const HomeLayout = ({ type }) => {
                 // setLoading(false);
             }
         };
-
+      
         fetchData(type);
     }, [type]);
 
