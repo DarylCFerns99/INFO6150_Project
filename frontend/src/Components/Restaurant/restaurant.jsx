@@ -19,7 +19,9 @@ const Restaurant = () => {
     const {placeId} = useParams();
     const restaurant_data = useSelector(state => state.restaurantReducer);
     console.log("ddddddd"+restaurant_data);
-    const {name, address, rating, reviews, opening_hours, map_link} = restaurant_data;
+    const {name, address, rating, reviews, opening_hours, map_link,
+        curbside_pickup, delivery, dine_in, takeout, reservable} = restaurant_data;
+    const optionsData = {curbside_pickup, delivery, dine_in, takeout, reservable}
     const dispatch = useDispatch();
     const [restaurantData, setRestaurantData] = useState({});
     console.log("reviews"+reviews[0].author_name)
@@ -51,6 +53,7 @@ const Restaurant = () => {
         margin : '40px auto'
     }
     // const restaurant = useSelector((state) => state.restaurantReducer.restaurants[0]);
+    console.log("lll "+opening_hours+" "+optionsData)
  
   return (
     <div>
@@ -87,7 +90,7 @@ const Restaurant = () => {
         </Button>
         </span>
         </div>
-        <TabOptions googleRevs={reviews} />
+        <TabOptions googleRevs={reviews} openingHours={opening_hours} optionsData={optionsData}/>
     </div>
   )
 }

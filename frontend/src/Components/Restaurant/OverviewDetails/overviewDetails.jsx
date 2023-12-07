@@ -15,7 +15,8 @@ const openHours = [
       ];
 
 
-const OverviewDetails = () => {
+const OverviewDetails = ({open, options}) => {
+    console.log("llll "+open);
   return (
     <div>
       <Card p="5">
@@ -75,7 +76,7 @@ const OverviewDetails = () => {
       align="start"
     >
         {/* Display Monday to Thursday in the first column */}
-        {openHours.slice(0, 4).map((hour, index) => (
+        {open.slice(0, 4).map((hour, index) => (
             <Text key={index}>
             <span style={{ color: "green" }}>{hour.split(": ")[0]}</span>: {hour.split(": ")[1]}
             </Text>

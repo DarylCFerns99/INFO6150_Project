@@ -4,8 +4,10 @@ import MapCard from '../MapCard/mapCard'
 import OverviewDetails from '../OverviewDetails/overviewDetails'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
-const TabOptions = ({googleRevs}) => {
+const TabOptions = ({googleRevs, openingHours, optionsData}) => {
+    console.log("lll "+openingHours+" "+optionsData)
   return (
+   
     <div>
             <Tabs mt="40px" colorScheme="red">
             <TabList>
@@ -20,7 +22,7 @@ const TabOptions = ({googleRevs}) => {
             <TabPanel>
                 <div style={{display : 'flex', justifyContent:"space-between"}}>
                 <div style={{ flex:"2", marginRight:"40px" }}>
-                    <OverviewDetails />
+                    <OverviewDetails open={openingHours} options={optionsData}/>
                 </div>
                 <div style={{flex:"1"}}>
                     {/* Your component goes here */}
