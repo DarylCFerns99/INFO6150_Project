@@ -1,10 +1,10 @@
 import React from 'react'
-import HomeLayout from './HomeLayout/homeLayout'
+import TabOptions from './TabOptions/tabOptions'
 
 const Home = () => {
     return (
         <div>
-            <HomeLayout/>
+            <TabOptions/>
         </div>
     )
 }
