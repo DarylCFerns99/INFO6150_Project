@@ -4,7 +4,7 @@ import MapCard from '../MapCard/mapCard'
 import OverviewDetails from '../OverviewDetails/overviewDetails'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
-const TabOptions = () => {
+const TabOptions = ({googleRevs}) => {
   return (
     <div>
             <Tabs mt="40px" colorScheme="red">
@@ -32,8 +32,10 @@ const TabOptions = () => {
             <p>two!</p>
             </TabPanel>
             <TabPanel>
-              <ReviewCard />
-              <ReviewCard />
+              {googleRevs && googleRevs.map((review) => (
+                    <ReviewCard author={review.author_name} content={review.text} rating={review.rating}/>
+              ))}
+              {console.log(googleRevs[0].rating)}
             </TabPanel>
             <TabPanel>
               <ReviewCard />

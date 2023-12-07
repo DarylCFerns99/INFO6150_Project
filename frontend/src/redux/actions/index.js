@@ -7,11 +7,16 @@ import * as actions from "./actionTypes"
 // })
 
 // Without payload
-// export const handleAddCurrrentWeatherData = () => ({
-//     type: actions.ADD_CURRENT_WEATHER_DATA
+export const handleAddCurrrentWeatherData = () => ({
+    type: actions.ADD_CURRENT_WEATHER_DATA
+})
+
+// export const handleSelectAllRestaurants = (restaurants) => ({
+//     type: actions.ADD_ALL_RESTAURANTS,
+//     payload : restaurants
 // })
 
-export const handleSelectAllRestaurants = (restaurants) => ({
-    type: actions.ADD_ALL_RESTAURANTS,
-    payload : restaurants
+export const handleSelectRestaurant = (restaurant) => ({
+    type: actions.SELECT_RESTAUARANT,
+    payload : restaurant
 })

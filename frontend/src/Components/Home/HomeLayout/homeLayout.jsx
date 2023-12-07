@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { SimpleGrid } from "@chakra-ui/react";
-import { Card, Text, Heading, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, Text, Heading, CardHeader, CardBody, CardFooter} from '@chakra-ui/react'
+import {Link} from 'react-router-dom';
 
 const HomeLayout = () => {
     const [data, setData] = useState(null);
@@ -25,9 +26,10 @@ const HomeLayout = () => {
 
         fetchData();
     }, []);
-
+    const placeId = 'ChIJ0TLzuIZw44kRIEl-0avABUs';
     return (
         <div>
+            <Link to={`/restaurant/${placeId}`}>Time</Link>
             <SimpleGrid columns={3} spacing={10}>
                 {data &&
                     data.map((item) => (
