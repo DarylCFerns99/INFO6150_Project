@@ -10,3 +10,8 @@ import * as actions from "./actionTypes"
 // export const handleAddCurrrentWeatherData = () => ({
 //     type: actions.ADD_CURRENT_WEATHER_DATA
 // })
+
+export const handleSelectAllRestaurants = (restaurants) => ({
+    type: actions.ADD_ALL_RESTAURANTS,
+    payload : restaurants
+})
