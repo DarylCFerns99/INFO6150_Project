@@ -6,7 +6,7 @@ const TabOptions = () => {
     return (
         <div>
             <Tabs mt="80px" variant='soft-rounded' colorScheme="red">
-                <TabList>
+                <TabList justifyContent="center" style={{ marginBottom: "20px" }}>
                     <Tab>Dining Out</Tab>
                     <Tab>Delivery</Tab>
                 </TabList>

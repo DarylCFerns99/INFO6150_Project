@@ -48,7 +48,7 @@ const HomeLayout = ({ type }) => {
     };
 
     return (
-        <div>
+        <div bg="#F8F8FF">
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
@@ -82,8 +82,8 @@ const HomeLayout = ({ type }) => {
                                         4.2 <FontAwesomeIcon icon={faStar} />
                                     </Badge> */}
                                 </span>
-                            {/* </CardHeader> */}
-                            
+                                {/* </CardHeader> */}
+
                                 <Text noOfLines={2} mt={2} fontSize={{ base: 'md%', lg: 'l' }} mb="0">{item.address}</Text>
                             </CardBody>
                         </Card>
