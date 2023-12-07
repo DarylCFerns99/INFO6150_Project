@@ -7,7 +7,7 @@ import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
 import Restaurant from "./Components/Restaurant/restaurant";
-import HomeLayout from "./Components/Home/HomeLayout/homeLayout";
+import Home from "./Components/Home/home";
 import { useSelector } from "react-redux";
 
 import { ChakraProvider } from '@chakra-ui/react'
@@ -43,7 +43,7 @@ function App() {
 						} */}
 					
 						 <Route path="/restaurant/:placeId" element={<Restaurant />} />
-						 <Route path="/Home" element = {<HomeLayout />} />
+						 <Route path="/home" element = {<Home />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</Router>
