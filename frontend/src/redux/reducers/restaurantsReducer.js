@@ -152,6 +152,8 @@ const restaurantsReducers = (state = initialState, action) => {
                 ...(action?.payload ?? {})
             })
         }
+        case actions.LOGOUT:
+            return initialState
         default:
             return state
     }

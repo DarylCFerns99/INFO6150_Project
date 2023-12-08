@@ -1,53 +1,85 @@
-import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import "./App.styles.css"
+import './App.css';
 
-import Header from "./Components/Header/header";
+import * as actions from './redux/actions'
+import { CustomToastify } from "./Common/customToastify";
+import { getFromLocalStorage, setSessionStorage } from "./Common/common";
+
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
-import Restaurant from "./Components/Restaurant/restaurant";
+
+import Header from "./Components/Header/header";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Profile from "./Components/Profile";
 import Home from "./Components/Home/home";
-import { useSelector } from "react-redux";
+import Footer from "./Components/Footer";
+import Restaurant from "./Components/Restaurant/restaurant";
 
 import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
+	const dispatch = useDispatch()
+
 	// Add routes to this object
 	const routes = {
-		'/home': <Header />,
-		'/home/:resaturant_id': <Header />,
-		'/home/:resaturant_id/menu': <Header />
+		'/home': <Home />,
+		'/home/:restaurant_id': <Header />,
+		'/home/:restaurant_id/menu': <Header />,
+		'/profile': <Profile />
+	}
+	const guestRoutes = {
+		'/': <Header />,
+		"/login": <Login />,
+		"/register": <Register />,
+		"/restaurantRegister": <Register isUser={false}  />,
 	}
 
+    useEffect(() => {
+        let tempUser = getFromLocalStorage("user")
+        if (tempUser) {
+            setSessionStorage(tempUser)
+            dispatch(actions.handleAddUserData(JSON.parse(tempUser)))
+        } else {
+            localStorage.clear()
+            sessionStorage.clear()
+        }
+    }, [])
 
 	return (
 		<ChakraProvider>
 		<div className="App">
-			<Header />
-			{/* <Restaurant/> */}
-				{/* <Header /> */}
-				<Router>
+			<Router>
+				<Header />
+				<main>
 					<Routes>
-						{/* <Route index path="/" element={<Navigate to="/home" replace />}></Route>
-						<Route exact path="/login" element={<GuestRoute />}> 
-							 <Route exact path="/login" element={<Login />} /> 
-					   </Route>
+						{
+							(Object.keys(guestRoutes) ?? []).map((ele, idx) => 
+								<Route exact path={ele} key={idx} element={<GuestRoute />}>
+									<Route exact path={ele} key={idx} element={guestRoutes[ele] || undefined} />
+								</Route>
+							)
+						}
 						{
 							(Object.keys(routes) ?? []).map((ele, idx) => 
 								<Route exact path={ele} key={idx} element={<AdminRoute />}>
 									<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
 								</Route>
 							)
-						} */}
-					
-						 <Route path="/restaurant/:placeId" element={<Restaurant />} />
-						 <Route path="/home" element = {<Home />} />
+						}
+						<Route path="/restaurant/:placeId" element={<Restaurant />} />
+						<Route path="/home" element = {<Home />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
-				</Router>
-			
-			</div>
+				</main>
+				<Footer />
+			</Router>
+			<CustomToastify />
+		</div>
 		</ChakraProvider>
 	);
 }
