@@ -26,7 +26,7 @@ const TabOptions = ({googleRevs, openingHours, optionsData}) => {
                 </div>
                  <div style={{flex:"1"}}> 
                     {/* Your component goes here */}
-                    {/* <MapCard /> */}
+                    <MapCard />
                 </div>
                 </div>
             </TabPanel>
@@ -34,10 +34,10 @@ const TabOptions = ({googleRevs, openingHours, optionsData}) => {
             <p>two!</p>
             </TabPanel>
             <TabPanel>
-              {/* {googleRevs && googleRevs.map((review) => (
+              {googleRevs && googleRevs.map((review) => (
                     <ReviewCard author={review.author_name} content={review.text} rating={review.rating}/>
               ))}
-              {console.log(googleRevs[0].rating)} */}
+              {console.log(googleRevs[0].rating)}
             </TabPanel>
             <TabPanel>
               <ReviewCard />
