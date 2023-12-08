@@ -25,7 +25,7 @@ const HomeLayout = ({ type }) => {
             try {
                 let host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
-                    `${host}/restaurant${endpoint}`
+                    `${host}restaurant${endpoint}`
                 );
                 // console.log(response.data);
                 setData(response.data);

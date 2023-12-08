@@ -10,7 +10,7 @@ const connect = async () => {
 
     const mongoServer = await MongoMemoryServer.create()
     const mongoUri = mongoServer.getUri()
-    await mongoose.connect(`${connectionString}${database}`)
+    await mongoose.connect(connectionString);
     // await mongoose.connect(mongoUri, { dbName: "imageTest" })
 }
 
