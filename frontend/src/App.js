@@ -19,7 +19,6 @@ function App() {
 		'/home/:resaturant_id': <Header />,
 		'/home/:resaturant_id/menu': <Header />
 	}
-	const restaurants = useSelector((state) => state);
 
 
 	return (
