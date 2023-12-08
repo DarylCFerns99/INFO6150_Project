@@ -6,7 +6,7 @@ import { getFromLocalStorage } from "../Common/common"
 const AdminRoute = () => {
     const registered = getFromLocalStorage('name') ? true : false
     
-	return registered ? <Outlet /> : <Navigate to="/login" />
+	return !registered ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default AdminRoute

@@ -1,12 +1,22 @@
 import * as actions from "./actionTypes"
 
 // Sample redux action functionality
-// export const handleAddCurrrentWeatherData = (payload) => ({
-//     type: actions.ADD_CURRENT_WEATHER_DATA,
-//     payload
-// })
+export const handleAddMenuData = (payload) => ({
+    type: actions.ADD_MENU_DATA,
+    payload
+})
 
-// Without payload
-// export const handleAddCurrrentWeatherData = () => ({
-//     type: actions.ADD_CURRENT_WEATHER_DATA
-// })
+export const handleAddItemToCart = (payload) => ({
+    type: actions.ADD_ITEM_CART,
+    payload
+})
+
+export const handleDelItemFromCart = (payload) => ({
+    type: actions.DEl_ITEM_CART,
+    payload
+})
+
+export const handleRemoveCartItem = (payload) => ({
+    type: actions.REMOVE_ITEM_CART,
+    payload
+})

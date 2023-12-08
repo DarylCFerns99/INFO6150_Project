@@ -6,13 +6,16 @@ import Header from "./Components/Header/header";
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
+import Menu from "./Components/Menu/menu";
+import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 
 function App() {
 	// Add routes to this object
 	const routes = {
 		'/home': <Header />,
-		'/home/:resaturant_id': <Header />,
-		'/home/:resaturant_id/menu': <Header />
+		'/home/:restaurant_id': <Header />,
+		'/home/:restaurant_id/menu': <Menu />,
+		"/home/:restaurant_id/checkout": <CheckoutPage/>
 	}
 
 	return (
