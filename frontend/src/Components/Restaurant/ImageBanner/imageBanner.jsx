@@ -75,7 +75,7 @@ const ImageBanner = (images) => {
   };
   const slideStylesWidthBackground = {
     ...slideStyles,
-    backgroundImage: `url(${imageCol[currentIndex].link})`,
+    backgroundImage: `url(${imageCol[currentIndex]})`,
   };
 
   
