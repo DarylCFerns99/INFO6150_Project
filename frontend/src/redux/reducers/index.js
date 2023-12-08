@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 // Import reducers here
-import sampleReducer from './sampleReducer'
+import userReducer from './userReducer'
 
 const allReducers = combineReducers({
     // Add reducers in this
-    sampleReducer
+    userReducer
 })
 
 export default allReducers

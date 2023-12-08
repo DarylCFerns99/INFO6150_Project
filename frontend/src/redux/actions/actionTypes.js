@@ -1,2 +1,4 @@
 // Sample actions
-// export const ADD_CURRENT_WEATHER_DATA = "ADD_CURRENT_WEATHER_DATA"
+export const ADD_USER_DATA = "ADD_USER_DATA"
+
+export const LOGOUT = "LOGOUT"
