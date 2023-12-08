@@ -17,7 +17,7 @@ const HomeLayout = ({ type }) => {
     //   const [loading, setLoading] = useState(true);
     const [selectedCard, setSelectedCard] = useState(null);
 
-
+    const placeId = 'ChIJRzjLv3d644kRhkAHf0tdR2g';
     useEffect(() => {
         const fetchData = async (type) => {
             const endpoint = type === 'Dining' ? '/restaurantsList' : '/deliveryList';
@@ -50,10 +50,11 @@ const HomeLayout = ({ type }) => {
 
     return (
         <div>
+            <Link to={`/restaurant/${placeId}`}>hi</Link>
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
-                        // <Link to={`/restaurant/${item.place_id}`}>
+                        <Link to={`/restaurant/${placeId}`}>
                         <Card
                             key={item.place_id}
                             p={2}
@@ -89,7 +90,7 @@ const HomeLayout = ({ type }) => {
                                 <Text noOfLines={2} mt={2} fontSize={{ base: 'md%', lg: 'l' }} mb="0">{item.address}</Text>
                             </CardBody>
                         </Card>
-                        // </Link>
+                         </Link>
                     ))}
             </SimpleGrid>
         </div>

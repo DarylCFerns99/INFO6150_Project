@@ -4,10 +4,12 @@ import MapCard from '../MapCard/mapCard'
 import OverviewDetails from '../OverviewDetails/overviewDetails'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
-const TabOptions = ({googleRevs}) => {
+const TabOptions = ({googleRevs, openingHours, optionsData}) => {
+    console.log("lll "+openingHours+" "+optionsData)
   return (
+   
     <div>
-            <Tabs mt="40px" colorScheme="red">
+           <Tabs mt="40px" colorScheme="red">
             <TabList>
             <Tab>Overview</Tab>
             <Tab>Menu</Tab>
@@ -20,11 +22,11 @@ const TabOptions = ({googleRevs}) => {
             <TabPanel>
                 <div style={{display : 'flex', justifyContent:"space-between"}}>
                 <div style={{ flex:"2", marginRight:"40px" }}>
-                    <OverviewDetails />
+                    <OverviewDetails open={openingHours} options={optionsData}/>
                 </div>
-                <div style={{flex:"1"}}>
+                 <div style={{flex:"1"}}> 
                     {/* Your component goes here */}
-                    <MapCard />
+                    {/* <MapCard /> */}
                 </div>
                 </div>
             </TabPanel>
@@ -32,10 +34,10 @@ const TabOptions = ({googleRevs}) => {
             <p>two!</p>
             </TabPanel>
             <TabPanel>
-              {googleRevs && googleRevs.map((review) => (
+              {/* {googleRevs && googleRevs.map((review) => (
                     <ReviewCard author={review.author_name} content={review.text} rating={review.rating}/>
               ))}
-              {console.log(googleRevs[0].rating)}
+              {console.log(googleRevs[0].rating)} */}
             </TabPanel>
             <TabPanel>
               <ReviewCard />
@@ -43,8 +45,8 @@ const TabOptions = ({googleRevs}) => {
             <TabPanel>
             </TabPanel>
             </TabPanels>
-            </Tabs>
-    </div>
+              </Tabs> 
+     </div> 
   )
 }
 
