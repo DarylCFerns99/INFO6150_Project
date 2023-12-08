@@ -120,7 +120,7 @@ export const inputComponents = {
     "country": (e) => (
         <Fragment key={e?.key}>
             <MDBInput wrapperClass={`${e?.valid && e?.valid !== undefined ? 'mb-0' : 'mb-4'}`} label='Country*' id='country' name='country' type='text' {...e} />
-            <div className={`form-text text-danger text-start ${e?.valid && e?.valid !== undefined ? "d-block mb-4" : "d-none"}`}>Please enter a valid city</div>
+            <div className={`form-text text-danger text-start ${e?.valid && e?.valid !== undefined ? "d-block mb-4" : "d-none"}`}>Please enter a valid country</div>
         </Fragment>
     ),
     "address2": (e) => (
