@@ -14,7 +14,7 @@ const port = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 // app.use(cors());
-var allowedOrigins = [`http://localhost:${port}`];
+var allowedOrigins = [process.env.FRONTEND_URL || "http://localhost:3000"];
 app.use(cors({
     origin: function(origin, callback){
         // allow requests with no origin 

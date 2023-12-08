@@ -27,13 +27,13 @@ function App() {
 
 	// Add routes to this object
 	const routes = {
-		'/home': <Header />,
+		'/home': <Home />,
 		'/home/:restaurant_id': <Header />,
 		'/home/:restaurant_id/menu': <Header />,
 		'/profile': <Profile />
 	}
 	const guestRoutes = {
-		'/': <Home />,
+		'/': <Header />,
 		"/login": <Login />,
 		"/register": <Register />,
 		"/restaurantRegister": <Register isUser={false}  />,
