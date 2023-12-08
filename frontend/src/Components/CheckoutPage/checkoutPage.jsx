@@ -27,7 +27,7 @@ const CheckoutPage = () => {
     // const [cartTotal, setCartTotal] = useState(0);
     const dispatch = useDispatch();
     const cartReducer = useSelector(state => state.cartReducer);
-    const checkoutKeys = Object.keys(cartReducer?.cartData[resto_id]);
+    const checkoutKeys = Object.keys(cartReducer?.cartData[resto_id] ?? { });
     const obj = checkoutKeys?.map(ele => (JSON.parse(ele)));
     
     // console.log("cart reducer",cartReducer.total[restaurant_id]);
