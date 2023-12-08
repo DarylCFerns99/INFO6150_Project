@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import './App.css';
@@ -19,8 +19,6 @@ import Profile from "./Components/Profile";
 import Home from "./Components/Home/home";
 import Footer from "./Components/Footer";
 import Restaurant from "./Components/Restaurant/restaurant";
-import Home from "./Components/Home/home";
-import { useSelector } from "react-redux";
 
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -59,7 +57,6 @@ function App() {
 				<Header />
 				<main>
 					<Routes>
-						{/* <Route index path="/" element={<Navigate to="/" replace />}></Route> */}
 						{
 							(Object.keys(guestRoutes) ?? []).map((ele, idx) => 
 								<Route exact path={ele} key={idx} element={<GuestRoute />}>
@@ -73,10 +70,9 @@ function App() {
 									<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
 								</Route>
 							)
-						} */}
-					
-						 <Route path="/restaurant/:placeId" element={<Restaurant />} />
-						 <Route path="/home" element = {<Home />} />
+						}
+						<Route path="/restaurant/:placeId" element={<Restaurant />} />
+						<Route path="/home" element = {<Home />} />
 						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 				</main>
