@@ -32,8 +32,9 @@ const Restaurant = () => {
         console.log("hii");
         const fetchData = async () => {
             try {
+                let host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
-                    `http://localhost:8081/restaurant/${placeId}`
+                    `${host}/restaurant/${placeId}`
                 );
                 console.log(response.data);
                 setRestaurantData(response?.data);
