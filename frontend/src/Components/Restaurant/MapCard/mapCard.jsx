@@ -5,14 +5,14 @@ import { Card,  CardBody, CardFooter, Image, Stack, Heading, Text, Divider,
 ButtonGroup, Button, Flex } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react';
 
-const mapCard = () => {
+const mapCard = ({phoneNumber, mapLink}) => {
     const location = {
         address: '1600 Amphitheatre Parkway, Mountain View, california.',
         lat: 37.42216,
         lng: -122.08427,
       }
     const mapUrl = "https://maps.google.com/?cid=6970511518661680907";
-      const phoneNumber = '+918075031371'
+   console.log("phone number"+phoneNumber)
   return (
     <div>
       <Card maxW='sm'>
@@ -26,7 +26,7 @@ const mapCard = () => {
                 <Stack mt='6' spacing='3'>
                 
                 </Stack>
-                <Link href={mapUrl} isExternal>
+                <Link href={mapLink} isExternal>
                 <Image
                 src='https://staticmapmaker.com/img/google-placeholder.png'
                 alt='Google map'
