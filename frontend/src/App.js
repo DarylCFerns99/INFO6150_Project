@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -51,7 +51,6 @@ function App() {
 				localStorage.clear()
 			}
 			if (tempUser) {
-				console.log(tempUser)
 				dispatch(actions.handleAddUserData(JSON.parse(tempUser)))
 			}
 		}

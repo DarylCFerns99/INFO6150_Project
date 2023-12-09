@@ -15,7 +15,7 @@ const port = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 // app.use(cors());
-var allowedOrigins = [process.env.FRONTEND_URL || "http://localhost:3000"];
+var allowedOrigins = [process.env.FRONTEND_URL || "http://localhost:3000", "https://test--leafy-yeot-86ea23.netlify.app"];
 app.use(cors({
     origin: function(origin, callback){
         // allow requests with no origin 

@@ -10,13 +10,13 @@ var orderSchema = new mongoose.Schema({
         type: String,
         required: [true, "Restaurant ID is required"],
     },
-    menu_item_id: {
-        type: String,
+    menu_items_id: {
+        type: Array,
         required: [true, "Menu Item ID is required"],
     },
-    quantity: {
-        type: String,
-        required: [true, "Quantity is required"],
+    total: {
+        type: Number,
+        required: [true, "total is required"],
     }
 }, { timestamps: true, collection: "Order" });
 

@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const Menu = require("../models/menu");
 
 const newMenuItem = async (req, res) => {
@@ -18,4 +19,45 @@ const newMenuItem = async (req, res) => {
         })
 }
 
-module.exports = { newMenuItem }
+String.prototype.toObjectId = function() {
+    var ObjectId = (require('mongoose').Types.ObjectId);
+    return new ObjectId(this.toString());
+}
+
+const getMenuItem = (ids=[]) => {
+    return new Promise(async (resolve, reject) => {
+        await Menu.find({ _id: { "$in": ids.map(ele => ele.toObjectId()) } })
+            .then(resp => {
+                let temp = {};
+                resp.forEach(ele => {
+                    let tempData = {
+                        ...ele["_doc"],
+                    }
+                    // delete tempData["image"];
+                    let key = JSON.stringify(tempData);
+                    if (temp[key]) {
+                        temp[key] = temp[key] + 1;
+                    } else {
+                        temp[key] = 1;
+                    }
+                })
+                resolve(temp);
+            })
+            .then(err => {
+                resolve({});
+            })
+    })
+}
+
+const fetchMenuItems = async (req, res) => {
+    console.log(req.body);
+    await Menu.find(req?.body ?? {})
+        .then(resp => {
+            res.status(200).json({"message": `Fetched menu items successfully`, "data": resp});
+        })
+        .catch(err => {
+            res.status(500).json({"message": "Failed to get menu item(s)", "error": err});
+        })
+}
+
+module.exports = { newMenuItem, getMenuItem, fetchMenuItems }
