@@ -53,7 +53,6 @@ const HomeLayout = ({ type }) => {
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
-                        <Link to={`/restaurant/${item.place_id}`}>
                         <Card
                             key={item.place_id}
                             p={2}
@@ -69,6 +68,7 @@ const HomeLayout = ({ type }) => {
                             cursor="pointer"
                             _hover={{ boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)' }}
                         >
+                            <Link to={`/restaurant/${item.place_id}`} style={{width: "100%"}}>
                             {/* <CardHeader> */}
                             <CardBody>
                                 <Center>
@@ -88,8 +88,8 @@ const HomeLayout = ({ type }) => {
 
                                 <Text noOfLines={2} mt={2} fontSize={{ base: 'md%', lg: 'l' }} mb="0">{item.address}</Text>
                             </CardBody>
-                        </Card>
                          </Link>
+                        </Card>
                     ))}
             </SimpleGrid>
         </div>
