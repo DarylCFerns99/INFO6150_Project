@@ -45,13 +45,12 @@ const HomeLayout = ({ type }) => {
     };
 
     const handleCardClick = (item) => {
-        console.log(item);
         setSelectedCard(item.place_id);
     };
 
     return (
         <div>
-            <SimpleGrid columns={{ sm: 2, md: 4, lg: 5 }} spacing={10} justifyItems="center">
+            <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
                         <Link to={`/restaurant/${item.place_id}`}>
