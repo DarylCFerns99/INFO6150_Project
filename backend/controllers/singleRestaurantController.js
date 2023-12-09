@@ -29,7 +29,8 @@ const getRestaurantViolations = router.get(
   async (req, res) => {
     try {
       const { placeId } = req.params;
-      const licenseno = "126243";
+      
+      const licenseno = req.query.license;
 
       const response = await RestaurantViolation.aggregate([
         {
