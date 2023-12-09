@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import './App.css';
-
-import * as actions from './redux/actions'
-import { CustomToastify } from "./Common/customToastify";
-import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from "./Common/common";
+import "./App.styles.css"
 
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";

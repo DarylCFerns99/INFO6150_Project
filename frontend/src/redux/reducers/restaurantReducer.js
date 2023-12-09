@@ -7,8 +7,6 @@ const restaurantReducer = (state = {}, action) => {
                 ...(action?.payload ?? {})
             })
         }
-        case actions.LOGOUT:
-            return {}
         default:
             return state
     }

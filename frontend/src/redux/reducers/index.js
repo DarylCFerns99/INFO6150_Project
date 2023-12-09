@@ -8,7 +8,7 @@ import cartReducer from './cartReducer'
 import orderReducer from './orderReducer'
 
 const allReducers = combineReducers({
-    // Add reducers in this
+    // Add reducers in this 
     restaurantsReducer,
     restaurantReducer,
     userReducer,

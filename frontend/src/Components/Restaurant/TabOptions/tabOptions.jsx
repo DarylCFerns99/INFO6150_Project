@@ -11,14 +11,17 @@ import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import { getReviews } from '../../Profile/service'
 import * as actions from '../../../redux/actions'
+import Violations from '../Violations/violations'; // Adjust the path accordingly
+import axios from 'axios'
 
 
-
-const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink}) => {
+const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink, licenseno, placeId, address, website}) => {
     // console.log("lll "+openingHours+" "+optionsData)
     // console.log("phone number"+phoneNumber)
     const dispatch = useDispatch();
     const [comment, setComment] = useState('')
+    const [violationsData, setViolationsData] = useState([]);
+    const [loadingViolations, setLoadingViolations] = useState(true);
     const handleComment = (e) => setComment(e.target.value);
     const {restaurant_id} = useParams()
     const userReducer = useSelector(state => state.userReducer);
@@ -49,7 +52,43 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
 
     useEffect(() => {
       handleFetchReviews()
+      
     },[])
+    useEffect(() => {
+      // Simulating an API call for violations data
+      const fetchViolationsData = async () => {
+        try {
+          // Make your API call here and set the violations data in the state
+          // Example API call:
+          // const response = await fetch('your_api_endpoint');
+          // const data = await response.json();
+          // setViolationsData(data);
+           await axios.get(
+            `http://localhost:8081/restaurant/${restaurant_id}/violations`, {
+              params : {
+                license : licenseno
+              }
+            }
+        ).then( response => {
+          setViolationsData(response)
+          setLoadingViolations(false);
+        })
+  
+        
+          ;
+        } catch (error) {
+          console.error('Error fetching violations data:', error);
+        } finally {
+          console.log("violationsData "+violationsData);
+          
+        }
+      };
+  
+      // Fetch violations data when the component mounts
+      if (loadingViolations) {
+        fetchViolationsData();
+      }
+    }, [loadingViolations]);
 
     const CommentComponent = (data) => (
       <Fragment>
@@ -72,18 +111,17 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
           </p>
       </Fragment>
     )
-  
+
   return (
-   
     <div>
-           <Tabs mt="40px" colorScheme="red">
-            <TabList>
-            <Tab>Overview</Tab>
-            <Tab>Menu</Tab>
-            <Tab>Google Reviews</Tab>
-            <Tab>User Reviews</Tab>
-            <Tab>Contact</Tab>
-            </TabList>
+      <Tabs mt="40px" colorScheme="red">
+        <TabList>
+          <Tab>Overview</Tab>
+          <Tab>Menu</Tab>
+          <Tab>Google Reviews</Tab>
+          <Tab>User Reviews</Tab>
+          <Tab>Violations</Tab>
+        </TabList>
 
             <TabPanels>
             <TabPanel>
@@ -141,6 +179,11 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
             
             </TabPanel>
             <TabPanel>
+            {loadingViolations ? (
+              <p>Loading violations...</p>
+            ) : (
+              <Violations violationsData={violationsData.data} />
+            )}
             </TabPanel>
             </TabPanels>
               </Tabs> 
@@ -149,4 +192,4 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
   )
 }
 
-export default TabOptions
+export default TabOptions;
