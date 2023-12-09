@@ -45,7 +45,6 @@ const getMenuItem = (ids=[]) => {
 }
 
 const fetchMenuItems = async (req, res) => {
-    console.log(req.body);
     await Menu.find(req?.body ?? {})
         .then(resp => {
             res.status(200).json({"message": `Fetched menu items successfully`, "data": resp});
@@ -55,4 +54,10 @@ const fetchMenuItems = async (req, res) => {
         })
 }
 
-module.exports = { newMenuItem, getMenuItem, fetchMenuItems }
+const bulkInsertMenuItems = async (req, res) => {
+    await Menu.insertMany(req.body.data)
+        .then(resp => res.status(200).json({"message": `Fetched menu items successfully`, "data": resp}))
+        .catch(err => res.status(500).json({"message": "Failed to get menu item(s)", "error": err}))
+}
+
+module.exports = { newMenuItem, getMenuItem, fetchMenuItems, bulkInsertMenuItems }
