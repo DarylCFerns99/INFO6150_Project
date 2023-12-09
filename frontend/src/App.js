@@ -11,27 +11,26 @@ import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from ".
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
-import Menu from "./Components/Menu/menu";
-import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 
 import Header from "./Components/Header/header";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import Home from "./Components/Home/home";
-import Footer from "./Components/Footer";
+import Menu from "./Components/Menu/menu";
 import Restaurant from "./Components/Restaurant/restaurant";
+import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
+import Footer from "./Components/Footer";
 
 function App() {
 	const dispatch = useDispatch()
 	const userReducer = useSelector(state => state.userReducer)
-	const [loading, setLoading] = useState(false)
 
 	// Add routes to this object
 	const routes = {
 		'/home': <Home />,
 		'/restaurant/:restaurant_id': <Restaurant />,
-		'/restaurant/:restaurant_id/menu': <Header />,
+		'/restaurant/:restaurant_id/menu': <Menu />,
 		'/profile': <Profile />,
 		"/home/:restaurant_id/checkout": <CheckoutPage/>
 	}
@@ -45,7 +44,6 @@ function App() {
     useEffect(() => {
 		if (!Object.keys(userReducer).length) {
 			let tempUser = getFromLocalStorage('user')
-			console.log(getFromLocalStorage("user"))
 			if (tempUser) {
 				setSessionStorage(tempUser)
 			} else {
@@ -53,6 +51,7 @@ function App() {
 				localStorage.clear()
 			}
 			if (tempUser) {
+				console.log(tempUser)
 				dispatch(actions.handleAddUserData(JSON.parse(tempUser)))
 			}
 		}
@@ -60,35 +59,29 @@ function App() {
 
 	return (
 		<div className="App">
-			{
-				loading
-				? <></>
-				: (
-					<Router>
-						<Header />
-						<main>
-							<Routes>
-								{
-									(Object.keys(guestRoutes) ?? []).map((ele, idx) =>
-										<Route exact path={ele} key={idx} element={<GuestRoute />}>
-											<Route exact path={ele} key={idx} element={guestRoutes[ele] || undefined} />
-										</Route>
-									)
-								}
-								{
-									(Object.keys(routes) ?? []).map((ele, idx) =>
-										<Route exact path={ele} key={idx} element={<AdminRoute />}>
-											<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
-										</Route>
-									)
-								}
-								<Route path="*" element={<PageNotFound />} />
-							</Routes>
-						</main>
-						<Footer />
-					</Router>
-				)
-			}
+			<Router>
+				<Header />
+				<main>
+					<Routes>
+						{
+							(Object.keys(guestRoutes) ?? []).map((ele, idx) =>
+								<Route exact path={ele} key={idx} element={<GuestRoute />}>
+									<Route exact path={ele} key={idx} element={guestRoutes[ele] || undefined} />
+								</Route>
+							)
+						}
+						{
+							(Object.keys(routes) ?? []).map((ele, idx) =>
+								<Route exact path={ele} key={idx} element={<AdminRoute />}>
+									<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
+								</Route>
+							)
+						}
+						<Route path="*" element={<PageNotFound />} />
+					</Routes>
+				</main>
+				<Footer />
+			</Router>
 			<CustomToastify />
 		</div>
 	);
