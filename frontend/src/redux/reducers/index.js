@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
 // Import reducers here
+import sampleReducer from './sampleReducer'
 import restaurantsReducer from './restaurantsReducer'
 import restaurantReducer from './restaurantReducer'
-import userReducer from './userReducer'
 
 const allReducers = combineReducers({
     // Add reducers in this
+    sampleReducer, 
     restaurantsReducer,
-    restaurantReducer,
-    userReducer
+    restaurantReducer
 })
 
 export default allReducers
