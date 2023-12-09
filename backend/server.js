@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
+// const mongoose = require('mongoose');
 
 const userRouter = require("./routes/userRouter");
 const { connect } = require('./database/connection');
@@ -29,9 +30,10 @@ app.use(cors({
 }));
 
 // Connection to database
-// mongoose.connect(`${connectionString}${database}`)
-//     .then(_ => console.log("Connection established"))
+// mongoose.connect(`${process.env.MONGODB_URI}`)
+//     .then(_ => console.log("Connection established to database"))
 //     .catch(err => console.log(err));
+    
 app.use("/user", userRouter);
 app.use("/restaurant", restaurantRouter);
 
