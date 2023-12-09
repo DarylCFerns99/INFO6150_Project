@@ -3,9 +3,13 @@ const router = express.Router();
 const RestaurantsListController = require('../controllers/restaurantListController');
 const SingleRestuarntsController = require('../controllers/singleRestaurantController');
 
-router.get('/restaurantsList', RestaurantsListController.getDineinRestaurants);
-router.get('/deliveryList', RestaurantsListController.getDeliveryRestaturants);
-router.get('/:placeId', SingleRestuarntsController.getRestaurantByPlaceId);
+
+restaurantRouter.get('/restaurantsList', RestaurantsListController.getDineinRestaurants);
+restaurantRouter.get('/deliveryList', RestaurantsListController.getDeliveryRestaturants);
+restaurantRouter.get('/:placeId', SingleRestuarntsController.getRestaurantByPlaceId);
+restaurantRouter.get('/:placeId/violations', SingleRestuarntsController.getRestaurantViolations);
+restaurantRouter.post("/addMenuItem", newMenuItem);
+
 
 
 module.exports = router;
