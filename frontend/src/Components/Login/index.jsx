@@ -49,14 +49,13 @@ const Login = () => {
             <MDBRow>
                 <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
                     <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{ color: 'hsl(218, 81%, 95%)' }}>
-                        The best offer <br />
-                        <span style={{ color: 'hsl(218, 81%, 75%)' }}>for your business</span>
+                        Safe Dine <br />
+                        <span style={{ color: 'hsl(218, 81%, 75%)' }}>Restaurant Safety Companion</span>
                     </h1>
                     <p className='px-3' style={{ color: 'hsl(218, 81%, 85%)' }}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                        quibusdam tempora at cupiditate quis eum maiores libero
-                        veritatis? Dicta facilis sint aliquid ipsum atque?
+                    The goal of this webpage is to provide the user with the health code violations data of the restaurants. The web app will also contain menu for each restaurant 
+                    which will allow users to add items to cart. There is also a User review section which allows users to post comments and restaurant owners to respond to these review. 
+                    The web app is also integrated with Google Places API allowing users to access restaurant information such as dine-in, delivery options, open hours, directions etc.. .
                     </p>
                 </MDBCol>
                 <MDBCol md='6' className='position-relative d-flex flex-column justify-content-center'>
