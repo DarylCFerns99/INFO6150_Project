@@ -1,40 +1,53 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { MDBAccordion, MDBAccordionItem, MDBCardText } from 'mdb-react-ui-kit'
+import ReviewCard from '../Restaurant/ReviewCard/reviewCardProfile'
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from "../../redux/actions"
+import { getReviews } from './service';
 
-const ReviewsDisplay = ({ isUser }) => {
+const ReviewsDisplay = () => {
+    const dispatch = useDispatch();
+    const [reviews, setReviews] = useState([])
+    const orderReducer = useSelector(state => state.orderReducer)
+    const userReducer = useSelector(state => state.userReducer)
+    const menuReducer = useSelector(state => state.menuReducer);
+
+    const handleFetchReviews = async() => {
+      //check for valid resto id in if loop 
+      console.log("dsadasd",userReducer.isUser)
+      await getReviews(!userReducer.isUser ? {restaurant_id : userReducer.restaurant_id} : {user_id : userReducer._id} )
+          .then((res) => {
+              dispatch(actions.handleGetReviews(res));       
+          })
+          .catch((err) => {
+              console.log(err);
+          });
+  }
+
+  useEffect(() => {
+    if(menuReducer.reviewData){
+      setReviews(menuReducer.reviewData)
+    }
+  }, [menuReducer.reviewData])
+
+  useEffect(() => {
+    if (userReducer != {}) {
+      handleFetchReviews();
+    }
+  }, [userReducer]);
     return (
         <Fragment>
             <div className="d-flex justify-content-between align-items-center mb-1">
                 <MDBCardText className="lead fw-normal mb-0">
-                    {isUser ? "My Reviews" : "Restaurant Reviews"}
+                    {userReducer.isUser ? "My Reviews" : "Restaurant Reviews"}
                 </MDBCardText>
             </div>
-            <MDBAccordion flush initialActive={1}>
-                <MDBAccordionItem collapseId={1} headerTitle='Accordion Item #1'>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </MDBAccordionItem>
-                <MDBAccordionItem collapseId={2} headerTitle='Accordion Item #2'>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </MDBAccordionItem>
-                <MDBAccordionItem collapseId={3} headerTitle='Accordion Item #3'>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </MDBAccordionItem>
-            </MDBAccordion>
+            {reviews.map((review, idx) => (
+               <Fragment key={idx}>
+                <ReviewCard {...review}  />
+               </Fragment> 
+                
+            ))}         
         </Fragment>
     )
 }

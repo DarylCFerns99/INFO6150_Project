@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { cartReducerDummy } from './checkoutdummy';
+
 import * as actions from '../../redux/actions'
 import {
         MDBBtn,
@@ -27,16 +29,26 @@ const CheckoutPage = () => {
     // const [cartTotal, setCartTotal] = useState(0);
     const dispatch = useDispatch();
     const cartReducer = useSelector(state => state.cartReducer);
+    const userReducer = useSelector(state => state.userReducer);
     const checkoutKeys = Object.keys(cartReducer?.cartData[resto_id] ?? { });
     const obj = checkoutKeys?.map(ele => (JSON.parse(ele)));
     
     // console.log("cart reducer",cartReducer.total[restaurant_id]);
-    console.log("obj",obj);
+    console.log("obj",userReducer._id);
     // console.log("resto id",resto_id);
 
-    // useEffect(() => {
-    //     console.log(cartTotal)
-    // },[cartTotal])
+
+
+    const transformCartReducerToObj = (cart) => {
+      //user_id, restaurant_id, total, menu_items_ids in array 
+      const obj = {
+          restaurant_id: Object.keys(cart.cartData)[0],
+          user_id: userReducer._id,
+          total: Object.values(cartReducerDummy.total)[0],
+          menu_items_ids: Object.keys(cartReducerDummy.cartData[Object.keys(cart.cartData)[0]]).map((e) => JSON.parse(e).id),     
+      }
+      console.log("transformed", obj)
+  }
 
     return (
       <section className="h-100 gradient-custom">
@@ -189,7 +201,7 @@ const CheckoutPage = () => {
                     </MDBListGroupItem>
                   </MDBListGroup>
 
-                  <MDBBtn block size="lg">
+                  <MDBBtn onClick={transformCartReducerToObj(cartReducerDummy)}  block size="lg">
                     Go to checkout
                   </MDBBtn>
                 </MDBCardBody>

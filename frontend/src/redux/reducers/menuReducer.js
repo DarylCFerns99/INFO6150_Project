@@ -3,6 +3,7 @@ import * as actions from "../actions/actionTypes"
 const initialState = {
     data: {},
     tempData: {},
+    reviewData: [],
 }
 
 const menuReducer = (state = initialState, action) => {
@@ -15,6 +16,13 @@ const menuReducer = (state = initialState, action) => {
                     ...state.tempData, 
                     ...action?.payload ?? {}
                 },
+            })
+        }
+
+        case actions.GET_REVIEWS: {
+            return ({
+                ...state,
+                reviewData: action?.payload ?? [],
             })
         }
         default:

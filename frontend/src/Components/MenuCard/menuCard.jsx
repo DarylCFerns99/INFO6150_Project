@@ -8,8 +8,9 @@ import {
     MDBBtn,
     MDBIcon,
 } from 'mdb-react-ui-kit'
+import { useState } from 'react';
 
-const MenuCard = (props) => {
+const MenuCard = ({props, iconFlag}) => {
   const {title, image, price, description} = props;
   const dispatch = useDispatch();
   const cartReducer = useSelector(state => state.cartReducer);
@@ -17,17 +18,17 @@ const MenuCard = (props) => {
   const resto_id = restaurant_id;
 
   return (
-    <div className='d-flex m-2 border-2'>
-        <div className='w-25'>
-            <img className=" rounded-3" src={foodImg} alt="" />
+    <div className='d-flex m-2 flex-column flex-sm-row border-2'>
+        <div>
+            <img style={{width: "clamp(100px, 15%, 300px)"}} className="rounded-3" src={foodImg} alt="" />
         </div>
-        <div className='w-75'>
-            <h2> <strong> {capitalizeFirstLetter(title) ?? "Loading"} </strong> </h2>
+        <div className='w-75 '>
+            <h5> <strong> {capitalizeFirstLetter(title) ?? "Loading"} </strong> </h5>
             <p>$ {price ?? "Loading..."}</p>
             <h4>{description ?? "Loading..."}</h4>
         </div> 
         
-        <div className="d-flex mb-4" style={{ maxWidth: "300px", maxHeight:"50px" }}>
+        {iconFlag && <div className="d-flex mb-4" style={{ maxWidth: "300px", maxHeight:"50px" }}>
                   <MDBBtn onClick={() => dispatch(actions.handleDelItemFromCart({props, resto_id}))} className="px-3 me-2">
                     <MDBIcon fas icon="minus" />
                   </MDBBtn>
@@ -37,7 +38,7 @@ const MenuCard = (props) => {
                   <MDBBtn onClick={() => dispatch(actions.handleAddItemToCart({props, resto_id}))} className="px-3 ms-2">
                     <MDBIcon fas icon="plus" />
                   </MDBBtn>
-        </div>
+        </div>}
     </div>
   )
 }

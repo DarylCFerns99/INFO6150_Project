@@ -54,7 +54,7 @@ const Header = () => {
                         }
                     </MDBNavbarNav>
 
-                    {
+                    {/* {
                         location.pathname === '/home' &&
                         <MDBNavbarNav className='ml-auto mb-2 mb-sm-0 d-none d-md-flex'>
                             <MDBNavbarItem>
@@ -64,7 +64,7 @@ const Header = () => {
                                 </form>
                             </MDBNavbarItem>
                         </MDBNavbarNav>
-                    }
+                    } */}
                     
                     <MDBNavbarNav className='ml-auto mb-2 mb-sm-0 d-flex justify-content-end'>
                         {

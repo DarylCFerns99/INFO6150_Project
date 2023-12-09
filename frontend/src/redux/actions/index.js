@@ -39,3 +39,13 @@ export const handleAddMenuItem = (payload) => ({
 export const handleLogout = () => ({
     type: actions.LOGOUT
 })
+
+export const handleGetOrderDetails = (payload) =>({
+    type: actions.GET_ORDER_DETAILS,
+    payload
+})
+
+export const handleGetReviews = (payload) =>({
+    type: actions.GET_REVIEWS,
+    payload
+})

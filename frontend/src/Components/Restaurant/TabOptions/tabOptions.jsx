@@ -3,6 +3,7 @@ import ReviewCard from '../ReviewCard/reviewCard'
 import MapCard from '../MapCard/mapCard'
 import OverviewDetails from '../OverviewDetails/overviewDetails'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import Menu from '../../Menu/menu'
 
 const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink}) => {
     console.log("lll "+openingHours+" "+optionsData)
@@ -32,7 +33,7 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
                 </div>
             </TabPanel>
             <TabPanel>
-            <p>two!</p>
+            <Menu />
             </TabPanel>
             <TabPanel>
               {googleRevs && googleRevs.map((review) => (

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCol, MDBContainer, MDBRow, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane } from 'mdb-react-ui-kit'
 
 import UserIcon from '../../assets/user-solid.svg'
@@ -7,14 +7,38 @@ import OrdersDisplay from './ordersDisplay'
 import ReviewsDisplay from './reviewsDisplay'
 import MenuDisplay from './menuDisplay'
 
+//
+import * as actions from '../../redux/actions'
+import { fetchMenu } from '../Menu/menuService'
+
+
 const Profile = () => {
     const userReducer = useSelector(state => state.userReducer)
+   
+    //// dummy data dump in menuReducer
+    const dispatch = useDispatch();
+    // const menuReducer = useSelector(state => state.menuReducer);
+    const handleFetchMenu = async() => {
+        //check for valid resto id in if loop 
+        await fetchMenu()
+            .then((res) => {
+                dispatch(actions.handleAddMenuData(res));
+                
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    useEffect(() => {
+        handleFetchMenu()
+    }, []);
 
     const [verticalActive, setVerticalActive] = useState('Personal Details');
     const [userData, setUserData] = useState({ name: "", email: "", phoneNumber: "", address1: "", address2: "", city: "", state: "", zipCode: "", isUser: true })
     
-    const addressEnd = `${userData.city}, ${userData.state} ${userData.zipCode}`
-    const createAddress = `${userData.address1}, ${userData.address2 && `${userData.address2},`} ${addressEnd}`
+    const createAddress  = `${userData.city}, ${userData.state} ${userData.zipCode}`
+    const addressEnd = `${userData.address1}, ${userData.address2 && `${userData.address2},`} ${createAddress}`
 
     let tabs = {
         'Personal Details': (<Fragment>
@@ -124,6 +148,7 @@ const Profile = () => {
                                     <MDBTabsPane open={verticalActive === tab} key={idx}>
                                         <MDBCard className="mb-4">
                                             <MDBCardBody>{tabs[tab]}</MDBCardBody>
+                                            
                                         </MDBCard>
                                     </MDBTabsPane>
                                 ))

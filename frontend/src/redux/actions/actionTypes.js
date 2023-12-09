@@ -10,3 +10,5 @@ export const ADD_USER_DATA = "ADD_USER_DATA"
 export const ADD_MENU_ITEM = "ADD_MENU_ITEM"
 
 export const LOGOUT = "LOGOUT"
+export const GET_ORDER_DETAILS  = "GET_ORDER_DETAILS"
+export const GET_REVIEWS = "GET_REVIEWS"

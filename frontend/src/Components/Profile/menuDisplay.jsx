@@ -5,6 +5,11 @@ import { checkIfLoading, checkObjectSome, convertImageToBase64 } from '../../Com
 import { addMenuItem } from './service'
 import { customToastSystem } from '../../Common/customToastify'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { capitalizeFirstLetter } from '../../Common/common'
+import MenuCard from '../MenuCard/menuCard'
+
+
 const MenuDisplay = () => {
     const categories = ["Appetizers", "Entrees", "Sides", "Chinese", "Indian", "Italian", "Desserts", "Beverages"]
     const defaultMenuData = {
@@ -41,11 +46,29 @@ const MenuDisplay = () => {
         toggleOpen()
     }
 
+    //
+    const menuReducer = useSelector(state => state.menuReducer);
+    const dispatch = useDispatch();
+
     return (
         <Fragment>
             <div className="d-flex justify-content-between align-items-center mb-1">
                 <MDBCardText className="lead fw-normal mb-0">Menu</MDBCardText>
                 <MDBCardText className="mb-0 text-primary" role="button" onClick={toggleOpen}><MDBIcon fas icon="plus" className="me-2" />Add Item</MDBCardText>
+            </div>
+            <div>
+            {Object.keys(menuReducer?.data["resto_id"] ?? {}).map((heading, idx) => (
+                <div key={idx}>
+                  <h2 id={heading}> {capitalizeFirstLetter(heading)} </h2>
+                  {menuReducer?.data["resto_id"][heading].map((key, index) => (
+                    <div key={`${idx}${index}`} className="hover-shadow">
+                      <hr />
+                      <MenuCard props={key} iconFlag={false} />
+                      <hr />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
             <MDBModal open={basicModal} setOpen={setBasicModal} tabIndex='-1'>
                 <MDBModalDialog>

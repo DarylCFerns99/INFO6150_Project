@@ -3,7 +3,11 @@ import userAxios from "../../service/userService"
 
 export const handleRegister = (data) => {
     return new Promise(async (resolve, reject) => {
-        await userAxios.post("/createUser", data)
+        let tempData = {...data};
+        if(!data.isUser){
+            tempData['restaurant_id'] = "ChIJNa46L4x544kRdP4vvfKzGUM";
+        }
+        await userAxios.post("/createUser", tempData)
             .then(res => {
                 resolve(res.data)
             })

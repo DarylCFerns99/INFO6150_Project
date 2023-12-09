@@ -51,7 +51,7 @@ const Menu = () => {
 
     const handleFetchMenu = async() => {
         //check for valid resto id in if loop 
-        await fetchMenu()
+        await fetchMenu(restaurant_id)
             .then((res) => {
                 dispatch(actions.handleAddMenuData(res));
                 
@@ -61,7 +61,6 @@ const Menu = () => {
             });
     }
 
-    const keys = Object.keys(menuData ?? {});
     const sumValues = Object.values(cartReducer.cartData[restaurant_id] ?? {}).reduce((a, b) => a + b, 0);
 
     useEffect(() => {
@@ -82,8 +81,6 @@ const Menu = () => {
 
     return (
       <div style={{ margin: "0 auto" }}>
-        <PhotoAlbum layout="rows" photos={photos} />
-        <hr />
         <MDBContainer className='mb-5'>
           <MDBRow>
             <MDBCol size="4">
@@ -107,13 +104,13 @@ const Menu = () => {
               </div>
 
               <hr />
-              {keys.map((heading, idx) => (
+              {Object.keys(menuData ?? {}).map((heading, idx) => (
                 <div key={idx}>
                   <h2 id={heading}> {capitalizeFirstLetter(heading)} </h2>
                   {menuData[heading].map((key, index) => (
                     <div key={`${idx}${index}`} className="hover-shadow">
                       <hr />
-                      <MenuCard {...key} />
+                      <MenuCard props = {key} iconFlag = {true} />
                       <hr />
                     </div>
                   ))}
@@ -124,7 +121,7 @@ const Menu = () => {
         </MDBContainer>
 
         <button 
-          style={{bottom: "55px"}}
+          style={{bottom: "55px", left:"50%", backgroundColor: "rgba(255,255,255, 0.9)" ,transform: "translate(-50%, -50%)"}}
           onClick={() => navigate(`/home/${restaurant_id}/checkout`)}
           className="btn btn-outline-primary btn-lg btn-rounded position-sticky"
         >
