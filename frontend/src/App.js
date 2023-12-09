@@ -11,6 +11,8 @@ import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from ".
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
 import PageNotFound from "./pageNotFound";
+import Menu from "./Components/Menu/menu";
+import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 
 import Header from "./Components/Header/header";
 import Login from "./Components/Login";
@@ -30,7 +32,8 @@ function App() {
 		'/home': <Home />,
 		'/restaurant/:restaurant_id': <Restaurant />,
 		'/restaurant/:restaurant_id/menu': <Header />,
-		'/profile': <Profile />
+		'/profile': <Profile />,
+		"/home/:restaurant_id/checkout": <CheckoutPage/>
 	}
 	const guestRoutes = {
 		'/': <Header />,
