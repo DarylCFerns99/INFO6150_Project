@@ -23,9 +23,8 @@ const HomeLayout = ({ type }) => {
             const endpoint = type === 'Dining' ? '/restaurantsList' : '/deliveryList';
 
             try {
-                let host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
-                    `${host}restaurant${endpoint}`
+                    `http://localhost:8081/restaurant${endpoint}`
                 );
                 // console.log(response.data);
                 setData(response.data);
