@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faStar } from '@fortawesome/free-solid-svg-icons'
 import { Button, Text, Badge} from '@chakra-ui/react'
 const ReviewCard = ({author, content, rating}) => {
-
   return (
     <div>
       <div class="reviewCard">

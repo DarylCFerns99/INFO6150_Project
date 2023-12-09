@@ -6,7 +6,7 @@ const data = {
     },
     "name":"Skadden, Arps, Slate, Meagher & Flom LLP",
     "address":"500 Boylston St, Boston, MA 02116, USA",
-    "place_id":"ChIJdz88sIRw44kRCx-ZfEs7vGA",
+    "restaurant_id":"ChIJdz88sIRw44kRCx-ZfEs7vGA",
     "curbside_pickup":null,
     "delivery":null,
     "dine_in":null,

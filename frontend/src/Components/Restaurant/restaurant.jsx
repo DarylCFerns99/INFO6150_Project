@@ -5,7 +5,7 @@ import ImageBanner from './ImageBanner/imageBanner'
 import TabOptions from './TabOptions/tabOptions'
 import { useDispatch } from 'react-redux'
 //Import Chakra Components
-import { Button, Text, Badge, Link } from '@chakra-ui/react'
+import { Button, Text, Badge, Link, ChakraProvider } from '@chakra-ui/react'
 
 //Import Font Awesome Components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,9 +14,8 @@ import { faDiamondTurnRight, faShare, faStar, faTruckMedical } from '@fortawesom
 import { useSelector } from "react-redux";
 import { handleSelectRestaurant } from '../../redux/actions'
 
-
 const Restaurant = () => {
-    const { placeId } = useParams();
+    const { restaurant_id } = useParams();
     const restaurant_data = useSelector(state => state.restaurantReducer);
     console.log("ddddddd" + restaurant_data);
     const { name, address, rating, reviews, opening_hours, map_link,
@@ -32,8 +31,9 @@ const Restaurant = () => {
         console.log("hii");
         const fetchData = async () => {
             try {
+                const host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
-                    `http://localhost:8081/restaurant/${placeId}`
+                    `${host}restaurant/${restaurant_id}`
                 );
                 console.log(response.data);
                 setRestaurantData(response?.data);
@@ -47,7 +47,7 @@ const Restaurant = () => {
         };
 
         fetchData();
-    }, [placeId]);
+    }, [restaurant_id]);
     console.log(restaurantData);
     const data = [
         { link: 'https://www.cnet.com/a/img/resize/69256d2623afcbaa911f08edc45fb2d3f6a8e172/hub/2023/02/03/afedd3ee-671d-4189-bf39-4f312248fb27/gettyimages-1042132904.jpg?auto=webp&fit=crop&height=675&width=1200' },
@@ -66,45 +66,45 @@ const Restaurant = () => {
       }
 
     return (
-        <div>
-         
-            <div style={ImageBannerStyles} >
-                <ImageBanner images={photosReference} />
-            </div>
+        <ChakraProvider>
             <div>
+                <div style={ImageBannerStyles} >
+                    <ImageBanner images={photosReference} />
+                </div>
+                <div>
 
-            </div>
-            <div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Text fontSize='4xl' mt="10px" mb="0px">{name}</Text>
-                    <span>  <Badge variant='solid' colorScheme='green'>
-                        {rating} <FontAwesomeIcon icon={faStar} />
-                    </Badge> &nbsp; Google Review &nbsp; &nbsp;
-                        <Badge variant='solid' colorScheme='green'>
-                            4.5 <FontAwesomeIcon icon={faStar} />
-                        </Badge> &nbsp; Safe Dine Review
+                </div>
+                <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <Text fontSize='4xl' mt="10px" mb="0px">{name}</Text>
+                        <span>  <Badge variant='solid' colorScheme='green'>
+                            {rating} <FontAwesomeIcon icon={faStar} />
+                        </Badge> &nbsp; Google Review &nbsp; &nbsp;
+                            <Badge variant='solid' colorScheme='green'>
+                                4.5 <FontAwesomeIcon icon={faStar} />
+                            </Badge> &nbsp; Safe Dine Review
+                        </span>
+                    </div>
+                    <Text fontSize='2xl' color='rgb(164, 164, 164)'>{address}</Text>
+                    <div style={{ height: "20px" }}>
+
+                    </div>
+                    <span>
+                        <Link href={map_link} isExternal>
+                            <Button colorScheme='red' variant='outline' >
+                                <FontAwesomeIcon icon={faDiamondTurnRight} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Direction</span>
+                            </Button>
+                        </Link>
+                        &nbsp; &nbsp;
+                        <Button colorScheme='red' variant='outline'>
+                            <FontAwesomeIcon icon={faShare} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Share</span>
+                        </Button>
                     </span>
                 </div>
-                <Text fontSize='2xl' color='rgb(164, 164, 164)'>{address}</Text>
-                <div style={{ height: "20px" }}>
-
-                </div>
-                <span>
-                    <Link href={map_link} isExternal>
-                        <Button colorScheme='red' variant='outline' >
-                            <FontAwesomeIcon icon={faDiamondTurnRight} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Direction</span>
-                        </Button>
-                    </Link>
-                    &nbsp; &nbsp;
-                    <Button colorScheme='red' variant='outline'>
-                        <FontAwesomeIcon icon={faShare} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Share</span>
-                    </Button>
-                </span>
+                <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link} licenseno={licenseno} placeId={restaurant_id} address={address} website={website}/>
+                
             </div>
-            <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link}
-            licenseno={licenseno} placeId={placeId} address={address} website={website}/>
-            
-        </div>
+        </ChakraProvider>
     )
 }
 
