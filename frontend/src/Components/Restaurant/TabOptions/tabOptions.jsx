@@ -6,7 +6,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import Violations from '../Violations/violations'; // Adjust the path accordingly
 import axios from 'axios'
 
-const TabOptions = ({ googleRevs, openingHours, optionsData, phoneNumber, mapLink, licenseno, placeId }) => {
+const TabOptions = ({ googleRevs, openingHours, optionsData, phoneNumber, mapLink, licenseno, placeId, address, website }) => {
   const [violationsData, setViolationsData] = useState([]);
   const [loadingViolations, setLoadingViolations] = useState(true);
 
@@ -64,7 +64,8 @@ const TabOptions = ({ googleRevs, openingHours, optionsData, phoneNumber, mapLin
                 <OverviewDetails open={openingHours} options={optionsData} />
               </div>
               <div style={{ flex: '1' }}>
-                <MapCard phoneNumber={phoneNumber} mapLink={mapLink} />
+                <MapCard phoneNumber={phoneNumber} mapLink={mapLink} address={address}
+                website={website} />
               </div>
             </div>
           </TabPanel>
