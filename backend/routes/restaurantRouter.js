@@ -1,13 +1,11 @@
 const express = require('express');
-const restaurantRouter = express.Router();
-const { newMenuItem } = require("../controllers/menuController");
+const router = express.Router();
 const RestaurantsListController = require('../controllers/restaurantListController');
 const SingleRestuarntsController = require('../controllers/singleRestaurantController');
 
-restaurantRouter.get('/restaurantsList', RestaurantsListController.getDineinRestaurants);
-restaurantRouter.get('/deliveryList', RestaurantsListController.getDeliveryRestaturants);
-restaurantRouter.get('/:placeId', SingleRestuarntsController.getRestaurantByPlaceId);
-restaurantRouter.post("/addMenuItem", newMenuItem);
+router.get('/restaurantsList', RestaurantsListController.getDineinRestaurants);
+router.get('/deliveryList', RestaurantsListController.getDeliveryRestaturants);
+router.get('/:placeId', SingleRestuarntsController.getRestaurantByPlaceId);
 
 
-module.exports = restaurantRouter;
+module.exports = router;
