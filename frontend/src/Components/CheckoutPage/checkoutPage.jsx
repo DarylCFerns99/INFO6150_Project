@@ -29,6 +29,7 @@ const CheckoutPage = () => {
     const dispatch = useDispatch();
     const cartReducer = useSelector(state => state.cartReducer);
     const userReducer = useSelector(state => state.userReducer);
+    const restaurantReducer = useSelector(state => state.restaurantReducer)
     const checkoutKeys = Object.keys(cartReducer?.cartData[resto_id] ?? { });
     const obj = checkoutKeys?.map(ele => (JSON.parse(ele)));
     const navigate = useNavigate();
@@ -64,7 +65,7 @@ const CheckoutPage = () => {
           <MDBRow className="justify-content-center my-4">
             <MDBCol md="8">
               <MDBCard className="mb-4">
-                <h2> resto name {resto_id} </h2>
+                <h2>{restaurantReducer.name} </h2>
                 <MDBCardHeader className="py-3">
                   <MDBTypography tag="h5" className="mb-0">
                     Cart Items : {checkoutKeys.length ?? 0}
@@ -80,7 +81,7 @@ const CheckoutPage = () => {
                           className="bg-image rounded hover-zoom hover-overlay"
                         >
                           <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
+                            src={ele.image}
                             className="w-100"
                           />
                           <a href="#!">
@@ -98,7 +99,6 @@ const CheckoutPage = () => {
                         <p>
                           <strong>{capitalizeFirstLetter(ele.title)}</strong>
                         </p>
-                        <p> Restaurant name : {ele.id}</p>
 
                         <MDBTooltip
                           wrapperProps={{ size: "sm" }}

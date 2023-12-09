@@ -23,6 +23,7 @@ import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 import Footer from "./Components/Footer";
 import LandingPage from "./Components/LandingPage/landingPage";
 import About from "./Components/About/about";
+import ContactUs from "./Components/ContactUs/contactUs";
 
 function App() {
 	const dispatch = useDispatch()
@@ -36,12 +37,14 @@ function App() {
 		'/profile': <Profile />,
 		"/home/:restaurant_id/checkout": <CheckoutPage/>,
 		'/about': <About />,
+		"/contact": <ContactUs />
+
 	}
 	const guestRoutes = {
 		'/': <LandingPage />,
 		"/login": <Login />,
 		"/register": <Register />,
-		"/restaurantRegister": <Register isUser={false}  />,
+		"/restaurantRegister": <Register isUser={false}/>,
 	}
 
     useEffect(() => {

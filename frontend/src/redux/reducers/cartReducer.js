@@ -59,10 +59,14 @@ const cartReducer = (state = initialState, action) => {
             console.log(action.payload)
             let tempData = {...state.cartData} 
             let {props, resto_id} = action.payload
+            let total = {...state.total}
+            let value = tempData[resto_id][JSON.stringify(props)]
+            total[resto_id] = total[resto_id] - props.price * value
             delete tempData[resto_id][JSON.stringify(props)]
             return ({
                 ...state, 
-                cartData: tempData
+                cartData: tempData,
+                total
             })
         }
         default:
