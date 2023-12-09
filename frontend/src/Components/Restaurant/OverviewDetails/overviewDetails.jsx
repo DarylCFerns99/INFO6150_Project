@@ -16,7 +16,7 @@ const openHours = [
 
 
 const OverviewDetails = ({open, options}) => {
-    console.log("llll "+open);
+    // console.log(open);
     const { curbside_pickup, delivery, dine_in, takeout, reservable} = options;
 
   return (

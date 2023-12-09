@@ -11,6 +11,9 @@ import { Button, Text, Badge, Link } from '@chakra-ui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiamondTurnRight, faShare, faStar, faTruckMedical } from '@fortawesome/free-solid-svg-icons'
 
+//import React Share Components
+import { TwitterShareButton } from 'react-share'
+
 import { useSelector } from "react-redux";
 import { handleSelectRestaurant } from '../../redux/actions'
 
@@ -27,6 +30,8 @@ const Restaurant = () => {
     console.log(openingHours);
     const dispatch = useDispatch();
     const [restaurantData, setRestaurantData] = useState({});
+
+    const shareUrl = `https://github.com`;
 
     useEffect(() => {
         console.log("hii");
@@ -96,12 +101,17 @@ const Restaurant = () => {
                         </Button>
                     </Link>
                     &nbsp; &nbsp;
-                    <Button colorScheme='red' variant='outline'>
-                        <FontAwesomeIcon icon={faShare} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Share</span>
-                    </Button>
+                    <TwitterShareButton
+                        url={shareUrl}
+                        title={name}
+                    >
+                        <Button colorScheme='red' variant='outline'>
+                            <FontAwesomeIcon icon={faShare} /> &nbsp; <span style={{ color: "black", fontWeight: "300" }}>Share</span>
+                        </Button>
+                    </TwitterShareButton>
                 </span>
             </div>
-            <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link}
+            <TabOptions name={name} googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link}
             licenseno={licenseno} placeId={placeId} address={address} website={website}/>
             
         </div>
