@@ -23,8 +23,9 @@ const HomeLayout = ({ type }) => {
             const endpoint = type === 'Dining' ? '/restaurantsList' : '/deliveryList';
 
             try {
+                let host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
-                    `http://localhost:8081/restaurant${endpoint}`
+                    `${host}restaurant${endpoint}`
                 );
                 // console.log(response.data);
                 setData(response.data);
@@ -50,7 +51,7 @@ const HomeLayout = ({ type }) => {
 
     return (
         <div>
-            <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10} justifyItems="center">
+            <SimpleGrid columns={{ sm: 1, md: 3, lg: 4 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
                         <Link to={`/restaurant/${item.place_id}`}>

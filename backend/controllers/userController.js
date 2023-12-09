@@ -6,7 +6,7 @@ const newUser = async (req, res) => {
         ...req.body
     });
     
-    // Svaing user
+    // Saving user
     await user.save()
         .then(response => {
             res.status(200).json({"message": `User ${response.email} created successfully`, "data": response});
@@ -27,23 +27,6 @@ const editUser = async (req, res) => {
     if (tempBody.email) {
         delete tempBody.email;
     }
-
-    // Finding user by email and updating data
-    // await User.findOneAndUpdate({ email }, {"$set": {...tempBody}}, { runValidators: true, returnDocument: "after" })
-    //     .then(async resp => {
-    //         if (resp) {
-    //             res.status(200).json({"message": `User ${email} updated successfully`, "data": resp});
-    //         } else {
-    //             res.status(200).json({"message": `Could not find user ${email}`});
-    //         }
-    //     })
-    //     .catch(err => {
-    //         if (Object.keys(err?.errors ?? {}).length > 0) {
-    //             res.status(500).json({"message": Object.keys(err.errors).map(field => err.errors[field].message)});
-    //         } else {
-    //             res.status(500).json({"message": `Failed to find User ${email}`});
-    //         }
-    //     });
 
     // Finding user
     await User.findOne({ email })
@@ -91,7 +74,7 @@ const deleteUser = async (req, res) => {
 
 const getUser = async (req, res) => {
     let user = {...req.body}
-    await User.findOne({ email: user?.email || "" })
+    await User.findOne({ email: user?.email || "" }).select('+password')
         .then(async resp => {
             if (resp) {
                 await resp.comparePassword(user?.password || "", (err, isMatch) => {
@@ -101,7 +84,9 @@ const getUser = async (req, res) => {
                     }
 
                     if (isMatch) {
-                        res.status(200).json({"message": `Login Successfull for user ${user?.email || ""}`, "data": resp});
+                        let temp = {...resp["_doc"]}
+                        delete temp.password
+                        res.status(200).json({"message": `Login Successfull for user ${user?.email || ""}`, "data": temp});
                     } else {
                         res.status(500).json({"message": `Invalid password for user ${user?.email || ""}`});
                     }
@@ -117,7 +102,8 @@ const getUser = async (req, res) => {
 
 const getAllUsers = async (_req, res) => {
     // Get all users from the database
-    await User.find()
+    await User.find({})
+    // await User.find({}, {password: 0})
         .then(resp => {
             // Checks if database is empty
             if (resp.length === 0) {
