@@ -17,23 +17,10 @@
     </li>
     <li>
         <h3>Anirudha Dudhasagare (002697516)</h3>
-        <p>Worked on developing the login, register pages of the webpage</p>
-        <ul>
-            <li><strong>Carousel</strong> - Used to display an image gallery on the login and register page</li>
-            <li><strong>Toasts</strong> - Used to display a notification if the login/registration is successful or not</li>
-            <li><strong>Spinner</strong> - Used to display an spinner(loading icon) once the login/register button is clicked</li>
-            <li><strong>Form Control</strong> - Used for various input, select, options and form groups elements.</li>
-        </ul>
+        <p>Worked on developing the login and cart</p>
     </li>
     <li>
         <h3>Daryl Fernandes (002834250)</h3>
-        <p>Worked on developing the about, header and footer of the webpage</p>
-        <h4>Boostrap components used:</h4>
-        <ul>
-            <li><strong>Card</strong> - Used to display individual team members relvant data</li>
-            <li><strong>Navbar</strong> - Used to create the header section of the webpage</li>
-            <li><strong>Collapse</strong> - Used to show/hide long description</li>
-            <li><strong>Button</strong> - Used as hyperlinks to members social site</li>
-        </ul>
+        <p>Worked on developing the menu, deployment to netlify and restaurant owner login flow</p>
     </li>
 </ol>
