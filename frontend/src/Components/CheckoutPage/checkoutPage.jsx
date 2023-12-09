@@ -209,7 +209,7 @@ const CheckoutPage = () => {
                     </MDBListGroupItem>
                   </MDBListGroup>
 
-                  <MDBBtn onClick={handleCreateOrder} block size="lg">
+                  <MDBBtn onClick={handleCreateOrder} disabled={Object.values(cartReducer.cartData[restaurant_id] ?? {}).length === 0} block size="lg">
                     Place Order
                   </MDBBtn>
                 </MDBCardBody>
