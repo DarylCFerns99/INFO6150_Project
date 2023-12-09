@@ -48,10 +48,12 @@ const mapCard = ({phoneNumber, mapLink, address, website}) => {
                         <FontAwesomeIcon icon={faCopy} /> &nbsp;{' '}
                         <span style={{ color: 'black', fontWeight: '300' }}>Copy</span>
                     </Button>
+                    <Link href={mapLink} isExternal>
                     <Button colorScheme="grey" variant="outline">
                         <FontAwesomeIcon icon={faDiamondTurnRight} style={{color : "#C53030"}}/> &nbsp;{' '}
                         <span style={{ color: 'black', fontWeight: '300' }}>Direction</span>
                     </Button>
+                    </Link>
                     </ButtonGroup>
                 </Flex>
             </CardFooter>
