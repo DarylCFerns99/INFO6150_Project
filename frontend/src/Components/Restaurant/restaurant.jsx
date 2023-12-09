@@ -20,7 +20,7 @@ const Restaurant = () => {
     const restaurant_data = useSelector(state => state.restaurantReducer);
     console.log("ddddddd" + restaurant_data);
     const { name, address, rating, reviews, opening_hours, map_link,
-        curbside_pickup, delivery, dine_in, takeout, reservable, photos, phone_number, licenseno } = restaurant_data;
+        curbside_pickup, delivery, dine_in, takeout, reservable, photos, phone_number, licenseno, website} = restaurant_data;
     const optionsData = { curbside_pickup, delivery, dine_in, takeout, reservable }
     const openingHours = opening_hours?.weekday_text;
     const photosReference = photos?.slice(0, 4).map(e => `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${e.photo_reference}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
@@ -102,7 +102,7 @@ const Restaurant = () => {
                 </span>
             </div>
             <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link}
-            licenseno={licenseno} placeId={placeId}/>
+            licenseno={licenseno} placeId={placeId} address={address} website={website}/>
             
         </div>
     )
