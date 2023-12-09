@@ -18,7 +18,7 @@ const createOrder = async (req, res) => {
 }
 
 const getOrder = async (req, res) => {
-    await Order.find(req.body)
+    await Order.find(req.body).sort({ createdAt: 'desc' })
         .then(async response => {
             if (response) {
                 let tempData = response.map(async ele => {

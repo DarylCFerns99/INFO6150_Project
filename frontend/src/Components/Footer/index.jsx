@@ -50,17 +50,17 @@ const Footer = () => {
                             <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
                             <p>
                                 <MDBIcon icon="home" className="me-2" />
-                                New York, NY 10012, US
+                                <a href="https://maps.app.goo.gl/WXxYmbQbMm9syt6H9">360 Huntington Ave, Boston, MA 02115</a>
                             </p>
                             <p>
                                 <MDBIcon icon="envelope" className="me-3" />
-                                info@example.com
+                                <a href='mailto:info@example.com'>info@example.com</a>
                             </p>
                             <p>
-                                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+                                <MDBIcon icon="phone" className="me-3" /> <a href='tel:+ 01 234 567 88'>+ 01 234 567 88</a>
                             </p>
                             <p>
-                                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+                                <MDBIcon icon="print" className="me-3" /> <a href='fax:+415.123.4567'>+415.123.4567</a>
                             </p>
                         </MDBCol>
                     </MDBRow>

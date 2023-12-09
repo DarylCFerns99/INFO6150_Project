@@ -15,7 +15,7 @@ const createReview = async (req, res) => {
 }
 
 const getReviews = async (req, res) => {
-    await UserReview.find(req?.body ?? {})
+    await UserReview.find(req?.body ?? {}).sort({ createdAt: 'desc' })
         .then(resp => {
             res.status(200).json({"message": `Fetched reviews successfully`, "data": resp});
         })
