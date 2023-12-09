@@ -9,6 +9,7 @@ import PageNotFound from "./pageNotFound";
 import Restaurant from "./Components/Restaurant/restaurant";
 import Home from "./Components/Home/home";
 import About from "./Components/About/about";
+import Contact from "./Components/Contact/contact";
 import { useSelector } from "react-redux";
 
 import { ChakraProvider } from '@chakra-ui/react'
@@ -42,6 +43,7 @@ function App() {
 							)
 						} */}
 						 <Route path="/about" element={<About/>}/>
+						 <Route path="/contact" element={<Contact/>}/>
 						 <Route path="/restaurant/:placeId" element={<Restaurant />} />
 						 <Route path="/home" element = {<Home />} />
 						<Route path="*" element={<PageNotFound />} />
