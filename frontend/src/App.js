@@ -41,7 +41,6 @@ function App() {
 
 	}
 	const guestRoutes = {
-		'/': <LandingPage />,
 		"/login": <Login />,
 		"/register": <Register />,
 		"/restaurantRegister": <Register isUser={false}/>,
@@ -68,6 +67,7 @@ function App() {
 				<Header />
 				<main>
 					<Routes>
+						<Route exact path={'/'} element={<LandingPage />} />
 						{
 							(Object.keys(guestRoutes) ?? []).map((ele, idx) =>
 								<Route exact path={ele} key={idx} element={<GuestRoute />}>
