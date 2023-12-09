@@ -14,7 +14,6 @@ import { capitalizeFirstLetter, formatMenuItems } from '../../Common/common';
 import { fetchMenu } from './menuService'
 
 //Top image handling
-import PhotoAlbum from 'react-photo-album'
 import { one, two, three, four } from '../../Common/imageImports';
 
 //components
