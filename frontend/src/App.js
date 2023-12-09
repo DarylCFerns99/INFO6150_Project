@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import * as actions from "./redux/actions"
-import { CustomToastify } from "./Common/";
+import { CustomToastify } from "./Common/customToastify";
 import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from "./Common/common";
 import "./App.styles.css"
+import "./App.css"
 
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
@@ -21,6 +22,7 @@ import Restaurant from "./Components/Restaurant/restaurant";
 import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 import Footer from "./Components/Footer";
 import LandingPage from "./Components/LandingPage/landingPage";
+import About from "./Components/About/about";
 
 function App() {
 	const dispatch = useDispatch()
@@ -32,7 +34,8 @@ function App() {
 		'/restaurant/:restaurant_id': <Restaurant />,
 		'/restaurant/:restaurant_id/menu': <Menu />,
 		'/profile': <Profile />,
-		"/home/:restaurant_id/checkout": <CheckoutPage/>
+		"/home/:restaurant_id/checkout": <CheckoutPage/>,
+		'/about': <About />,
 	}
 	const guestRoutes = {
 		'/': <LandingPage />,

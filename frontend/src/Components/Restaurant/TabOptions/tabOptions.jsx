@@ -63,8 +63,9 @@ const TabOptions = ({googleRevs, openingHours, optionsData, phoneNumber, mapLink
           // const response = await fetch('your_api_endpoint');
           // const data = await response.json();
           // setViolationsData(data);
-           await axios.get(
-            `http://localhost:8081/restaurant/${restaurant_id}/violations`, {
+            const host = process.env.REACT_APP_API_URL
+            const response = await axios.get(
+                `${host}restaurant/${restaurant_id}/violations`, {
               params : {
                 license : licenseno
               }
