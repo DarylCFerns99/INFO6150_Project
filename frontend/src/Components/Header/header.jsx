@@ -1,31 +1,34 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MDBContainer, MDBNavbar, MDBNavbarBrand, MDBNavbarToggler, MDBIcon, MDBNavbarNav, MDBNavbarItem, MDBNavbarLink, MDBBtn, MDBCollapse, MDBDropdown, MDBDropdownToggle, MDBDropdownItem, MDBDropdownMenu } from 'mdb-react-ui-kit';
 
 import * as actions from '../../redux/actions'
-import { getFromSessionStorage } from '../../Common/common';
 
 const Header = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const dispatch = useDispatch()
+    const userReducer = useSelector(state => state.userReducer)
     
     const routes = [
         {name: "Home", path: "/home"},
         {name: "About", path: "/about"},
         {name: "Contact", path: "/contact"}
     ]
+    const [user, setUser] = useState({})
     const [openBasic, setOpenBasic] = useState(false)
-
-    const user = getFromSessionStorage("user")
 
     const handleLogout = () => {
         dispatch(actions.handleLogout())
         localStorage.clear()
         sessionStorage.clear()
-        navigate("/")
+        window.location.href = "/"
     }
+
+    useEffect(() => {
+        Object.keys(userReducer).length && setUser(userReducer)
+    }, [userReducer])
 
     return (
         <MDBNavbar expand='sm' light bgColor='light'>
@@ -68,7 +71,7 @@ const Header = () => {
                     
                     <MDBNavbarNav className='ml-auto mb-2 mb-sm-0 d-flex justify-content-end'>
                         {
-                            user
+                            Object.keys(user).length
                             ? (
                                 <MDBDropdown>
                                     <MDBDropdownToggle tag='a' className='nav-link' role='button'>
@@ -78,7 +81,7 @@ const Header = () => {
                                             style={{width: "28px", verticalAlign: "bottom"}}
                                             alt="Avatar"
                                         />
-                                        Welcome, {JSON.parse(user)?.name?.split(" ")?.[0] ?? undefined}
+                                        Welcome, {user?.name?.split(" ")?.[0] ?? undefined}
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu>
                                         <MDBDropdownItem link onClick={() => navigate("/profile")}>Profile</MDBDropdownItem>

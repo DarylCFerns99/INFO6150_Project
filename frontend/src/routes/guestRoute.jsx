@@ -1,10 +1,12 @@
 import React from "react"
 import { Navigate, Outlet  } from "react-router-dom"
 
-import { getFromSessionStorage } from "../Common/common"
+import { getFromLocalStorage, getFromSessionStorage } from "../Common/common"
 
 const GuestRoute = () => {
-    const registered = getFromSessionStorage('user') ? false : true
+    const local = getFromLocalStorage("user")
+    const session = getFromSessionStorage("user")
+    const registered = (local || session) ? false : true
     
 	return registered ? <Outlet /> : <Navigate to="/" />
 }
