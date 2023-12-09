@@ -7,6 +7,7 @@ const SingleRestuarntsController = require('../controllers/singleRestaurantContr
 restaurantRouter.get('/restaurantsList', RestaurantsListController.getDineinRestaurants);
 restaurantRouter.get('/deliveryList', RestaurantsListController.getDeliveryRestaturants);
 restaurantRouter.get('/:placeId', SingleRestuarntsController.getRestaurantByPlaceId);
+restaurantRouter.get('/:placeId/violations', SingleRestuarntsController.getRestaurantViolations);
 restaurantRouter.post("/addMenuItem", newMenuItem);
 
 
