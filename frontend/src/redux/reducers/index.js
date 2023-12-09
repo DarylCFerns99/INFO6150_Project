@@ -1,10 +1,18 @@
 import { combineReducers } from 'redux'
-// Import reducers here
+import menuReducer from './menuReducer'
+import cartReducer from './cartReducer'
+
+import restaurantsReducer from './restaurantsReducer'
+import restaurantReducer from './restaurantReducer'
+import userReducer from './userReducer'
 import menuReducer from './menuReducer'
 import cartReducer from './cartReducer'
 
 const allReducers = combineReducers({
     // Add reducers in this
+    restaurantsReducer,
+    restaurantReducer,
+    userReducer,
     menuReducer,
     cartReducer,
 })
