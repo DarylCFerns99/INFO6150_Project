@@ -8,7 +8,7 @@
   
   .App main {
     flex: auto;
-    padding: 0 15%;
+    padding: 15px;
   }
   
   .errorPage {
@@ -97,7 +97,7 @@
     }
     
     100% {
-        left: 130%;
+        left: 80%;
         transform: translateX(100%) rotate(540deg);
     }
   }

@@ -34,16 +34,12 @@ const getMenuItem = (ids=[]) => {
                     }
                     // delete tempData["image"];
                     let key = JSON.stringify(tempData);
-                    if (temp[key]) {
-                        temp[key] = temp[key] + 1;
-                    } else {
-                        temp[key] = 1;
-                    }
+                    temp[key] = ids.filter(id => id === ele._id.toString()).length;
                 })
                 resolve(temp);
             })
             .then(err => {
-                resolve({});
+                resolve([]);
             })
     })
 }

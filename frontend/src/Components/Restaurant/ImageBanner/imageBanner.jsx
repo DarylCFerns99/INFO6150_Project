@@ -30,6 +30,8 @@ const ImageBanner = (images) => {
   
   const sliderStyles = {
     height: '100%',
+    width: 'clamp(300px, 100%, 800px)',
+    margin: '0 auto',
     position: 'relative' // Corrected typo in "position"
   };
 

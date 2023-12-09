@@ -21,6 +21,7 @@ import Menu from "./Components/Menu/menu";
 import Restaurant from "./Components/Restaurant/restaurant";
 import CheckoutPage from "./Components/CheckoutPage/checkoutPage";
 import Footer from "./Components/Footer";
+import LandingPage from "./Components/LandingPage/landingPage";
 
 function App() {
 	const dispatch = useDispatch()
@@ -35,7 +36,7 @@ function App() {
 		"/home/:restaurant_id/checkout": <CheckoutPage/>
 	}
 	const guestRoutes = {
-		'/': <Header />,
+		'/': <LandingPage />,
 		"/login": <Login />,
 		"/register": <Register />,
 		"/restaurantRegister": <Register isUser={false}  />,
