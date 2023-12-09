@@ -119,7 +119,7 @@ const Menu = ({ iconFlag=false }) => {
         </MDBContainer>
 
 {
-  iconFlag &&
+  (iconFlag && Object.values(cartReducer.cartData[restaurant_id] ?? {}).length !== 0) &&
     <button 
       style={{bottom: "55px", left:"50%", backgroundColor: "rgba(255,255,255, 0.9)" ,transform: "translate(-50%, -50%)"}}
       onClick={() => navigate(`/home/${restaurant_id}/checkout`)}
