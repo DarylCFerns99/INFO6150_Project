@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux'
-import menuReducer from './menuReducer'
-import cartReducer from './cartReducer'
 
 import restaurantsReducer from './restaurantsReducer'
 import restaurantReducer from './restaurantReducer'
