@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const Menu = require("../models/menu");
 
 const newMenuItem = async (req, res) => {
@@ -25,7 +24,7 @@ String.prototype.toObjectId = function() {
 }
 
 const getMenuItem = (ids=[]) => {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, _reject) => {
         await Menu.find({ _id: { "$in": ids.map(ele => ele.toObjectId()) } })
             .then(resp => {
                 let temp = {};

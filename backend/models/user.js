@@ -115,6 +115,10 @@ var userSchema = new mongoose.Schema({
     isUser: {
         type: Boolean,
         default: true
+    },
+    restaurant_id: {
+        type: String,
+        required: [false, "Restaurant is required"],
     }
 }, { timestamps: true, collection: "User" });
 
