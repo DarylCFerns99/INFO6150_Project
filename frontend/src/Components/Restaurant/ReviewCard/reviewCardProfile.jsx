@@ -74,7 +74,7 @@ const ReviewCard = (props) => {
         <CommentComponent author={author} content={content} createdAt={createdAt}/>
 
         {
-          !reply[0] &&
+          (!reply[0] && !userReducer.isUser) &&
         <div className="small d-flex justify-content-start">
           {/* <a href="#!" className="d-flex align-items-center me-3">
             <MDBIcon far icon="thumbs-up me-2" />
