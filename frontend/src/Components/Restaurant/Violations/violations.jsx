@@ -17,7 +17,7 @@ const Violations = ({violationsData}) => {
       {violationsData.map((getItem, index) => (
         <div key={index} onClick={()=>handleAccordion(index)}>
           <div className="accordion__violation-heading">
-            <h3 className={accordion === index ? "active" : ""}>{getItem._id}</h3>
+            <h6 className={accordion === index ? "active" : ""}>{getItem._id}</h6>
           </div>
           <div>
             <div className={accordion === index ? "active" : "inactive"}>
@@ -32,6 +32,7 @@ const Violations = ({violationsData}) => {
                 borderRadius="10px"
                 p={4}
                 mb={10}
+                mt={10}
             >
         {/* First Row with 3 columns */}
         <GridItem colSpan={1} rowSpan={1}  p={4}>
