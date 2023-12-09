@@ -23,9 +23,9 @@ const MenuCard = ({props, iconFlag}) => {
             <img style={{width: "clamp(100px, 15%, 300px)"}} className="rounded-3" src={foodImg} alt="" />
         </div>
         <div className='w-75 '>
-            <h5> <strong> {capitalizeFirstLetter(title) ?? "Loading"} </strong> </h5>
-            <p>$ {price ?? "Loading..."}</p>
-            <h4>{description ?? "Loading..."}</h4>
+            <h4> <strong> {capitalizeFirstLetter(title) ?? "Loading"} </strong> </h4>
+            <h5>$ {price ?? "Loading..."}</h5>
+            <p>{description ?? "Loading..."}</p>
         </div> 
         
         {iconFlag && <div className="d-flex mb-4" style={{ maxWidth: "300px", maxHeight:"50px" }}>

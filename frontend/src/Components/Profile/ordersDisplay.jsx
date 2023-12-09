@@ -44,7 +44,7 @@ const OrdersDisplay = ({ isUser }) => {
           </MDBCardText>
           {/* <MDBCardText className="mb-0"><a href="#!" className="text-muted">Show all</a></MDBCardText> */}
         </div>
-        <MDBAccordion flush initialActive={1}>
+        <MDBAccordion flush >
           {orderId.map((order, idx) => (
             <MDBAccordionItem collapseId={idx} headerTitle={`Order #${order._id}`}>
                 <MDBContainer>

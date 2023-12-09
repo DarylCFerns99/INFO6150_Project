@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { cartReducerDummy } from './checkoutdummy';
-
+import { createOrder } from './service';
 import * as actions from '../../redux/actions'
 import {
         MDBBtn,
@@ -18,7 +16,8 @@ import {
         MDBTooltip,
         MDBTypography,
     } from "mdb-react-ui-kit";
-import { useParams } from 'react-router';
+    
+import { useNavigate, useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { capitalizeFirstLetter } from '../../Common/common';
 
@@ -32,23 +31,32 @@ const CheckoutPage = () => {
     const userReducer = useSelector(state => state.userReducer);
     const checkoutKeys = Object.keys(cartReducer?.cartData[resto_id] ?? { });
     const obj = checkoutKeys?.map(ele => (JSON.parse(ele)));
-    
-    // console.log("cart reducer",cartReducer.total[restaurant_id]);
-    console.log("obj",userReducer._id);
-    // console.log("resto id",resto_id);
+    const navigate = useNavigate();
+    const handleCreateOrder = async () => {
+      
+      await createOrder(transformCartReducerToObj(cartReducer))
+          .then((res) => {
+              dispatch(actions.handleDelRestoCart(restaurant_id))
+              navigate('/home');   
+          })
+          .catch((err) => {
+              console.log(err);
+          });
 
-
+      console.log(transformCartReducerToObj(cartReducer))
+    }
 
     const transformCartReducerToObj = (cart) => {
       //user_id, restaurant_id, total, menu_items_ids in array 
+      const {cartData, total} = cart
       const obj = {
-          restaurant_id: Object.keys(cart.cartData)[0],
+          restaurant_id,
           user_id: userReducer._id,
-          total: Object.values(cartReducerDummy.total)[0],
-          menu_items_ids: Object.keys(cartReducerDummy.cartData[Object.keys(cart.cartData)[0]]).map((e) => JSON.parse(e).id),     
+          total: ((total[restaurant_id] * 6.25)/100 + total[restaurant_id]).toFixed(2) ,
+          menu_items_id: [].concat(...Object.keys(cartData?.[restaurant_id] ?? {}).map((e) => Array(cartData[restaurant_id][e]).fill(JSON.parse(e)._id))),     
       }
-      console.log("transformed", obj)
-  }
+      return obj;
+    }
 
     return (
       <section className="h-100 gradient-custom">
@@ -186,7 +194,7 @@ const CheckoutPage = () => {
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
                       Tax - 6.25%
-                      <span> { (cartReducer.total[restaurant_id]* 6.25/100 ).toFixed(2) } </span>
+                      <span> { ((cartReducer.total[restaurant_id] * 6.25)/100).toFixed(2) } </span>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>
@@ -201,8 +209,8 @@ const CheckoutPage = () => {
                     </MDBListGroupItem>
                   </MDBListGroup>
 
-                  <MDBBtn onClick={transformCartReducerToObj(cartReducerDummy)}  block size="lg">
-                    Go to checkout
+                  <MDBBtn onClick={handleCreateOrder} block size="lg">
+                    Place Order
                   </MDBBtn>
                 </MDBCardBody>
               </MDBCard>

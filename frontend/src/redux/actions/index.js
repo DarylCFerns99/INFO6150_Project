@@ -49,3 +49,8 @@ export const handleGetReviews = (payload) =>({
     type: actions.GET_REVIEWS,
     payload
 })
+
+export const handleDelRestoCart = (payload) => ({
+    type: actions.DEL_RESTO_CART,
+    payload
+})

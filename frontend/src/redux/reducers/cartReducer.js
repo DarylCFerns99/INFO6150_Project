@@ -24,7 +24,6 @@ const handleIncAndDec = (key,{cartData,total}, inc=true) => {
         if(cartData[key.resto_id]?.[strKey] && cartData[key.resto_id][strKey] != 1) { cartData[key.resto_id][strKey] -= 1} 
             else delete cartData[key.resto_id]?.[strKey];
     }
-
     return {cartData, total};
 }
 
@@ -43,6 +42,17 @@ const cartReducer = (state = initialState, action) => {
                 ...state,                 
                 ...handleIncAndDec(action.payload, state, false)
             })   
+        }
+
+        case actions.DEL_RESTO_CART: {
+            let {cartData, total} = {...state}
+            delete cartData[action.payload]
+            delete total[action.payload]
+            return ({
+                ...state,
+                cartData,
+                total
+            })
         }
 
         case actions.REMOVE_ITEM_CART:{
