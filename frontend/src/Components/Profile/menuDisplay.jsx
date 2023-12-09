@@ -1,11 +1,45 @@
-import React, { Fragment, useState } from 'react'
-import { MDBBtn, MDBCardText, MDBIcon, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle } from 'mdb-react-ui-kit'
+import React, { Fragment, useEffect, useState } from 'react'
+import { MDBBtn, MDBCardText, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBTextArea } from 'mdb-react-ui-kit'
+
+import { checkIfLoading, checkObjectSome, convertImageToBase64 } from '../../Common/common'
+import { addMenuItem } from './service'
+import { customToastSystem } from '../../Common/customToastify'
 
 const MenuDisplay = () => {
-    const categories = ["Chinese", "Indian", "Italian", ""]
+    const categories = ["Appetizers", "Entrees", "Sides", "Chinese", "Indian", "Italian", "Desserts", "Beverages"]
+    const defaultMenuData = {
+        title: "",
+        category: "",
+        price: 0.0,
+        description: "",
+        image: "",
+        restaurant_id: 2
+    }
+    const [loading, setLoading] = useState(false)
     const [basicModal, setBasicModal] = useState(false)
+    const [menuData, setMenuData] = useState(defaultMenuData)
 
     const toggleOpen = () => setBasicModal(!basicModal)
+    const handleSetMenuData = (e) => setMenuData(prev => ({...prev, [e.target.name]: e.target.value}))
+    const handleFileUpload = async (e) => {
+        const file = e.target.files?.[0]
+        const base64 = await convertImageToBase64(file)
+        setMenuData(prev => ({...prev, "image": base64}))
+    }
+
+    const handleAddMenuItem = async () => {
+        setLoading(true)
+        // await addMenuItem(menuData)
+        //     .then(res => {
+        //         customToastSystem(res?.data?.message, "success")
+        //     })
+        //     .catch(err => {
+        //         customToastSystem(err?.message, "error")
+        //     })
+        // setLoading(false)
+        console.log(menuData)
+        toggleOpen()
+    }
 
     return (
         <Fragment>
@@ -22,20 +56,27 @@ const MenuDisplay = () => {
                         </MDBModalHeader>
                         
                         <MDBModalBody>
-                            Modal body text goes here.
-                            <select class="form-select" aria-label="Select Category">
+                            <select className="form-select mb-4" value={menuData.category} aria-label="Select Category" name="category" onChange={handleSetMenuData}>
                                 <option selected>Choose a category</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                {
+                                    categories.map((option, idx) => (
+                                        <option value={option} key={idx}>{option}</option>
+                                    ))
+                                }
                             </select>
+                            <MDBInput wrapperClass={`mb-4`} label='Item Name*' id='title' name='title' type='text' value={menuData.title} onChange={handleSetMenuData} />
+                            <MDBInput wrapperClass={`mb-4`} label='Item Price*' id='price' name='price' type='number' value={menuData.price} onChange={handleSetMenuData} />
+                            <MDBTextArea wrapperClass={`mb-4`} label='Item Description*' id='description' name='description' row={2} col={2} value={menuData.description} onChange={handleSetMenuData} />
+                            <MDBInput wrapperClass={`mb-4`} id='image' name='image' type='file' accept=".jpeg,.png,.jpg" onChange={handleFileUpload} />
                         </MDBModalBody>
 
                         <MDBModalFooter>
                             <MDBBtn color='secondary' onClick={toggleOpen}>
                                 Close
                             </MDBBtn>
-                            <MDBBtn>Save changes</MDBBtn>
+                            <MDBBtn onClick={handleAddMenuItem} disabled={loading || checkObjectSome(Object.values(menuData).map(ele => ele ? true : false), false)}>
+                                {checkIfLoading(loading, "Create Item")}
+                            </MDBBtn>
                         </MDBModalFooter>
                     </MDBModalContent>
                 </MDBModalDialog>

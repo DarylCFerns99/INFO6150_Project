@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -6,7 +6,7 @@ import './App.css';
 
 import * as actions from './redux/actions'
 import { CustomToastify } from "./Common/customToastify";
-import { getFromLocalStorage, setSessionStorage } from "./Common/common";
+import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from "./Common/common";
 
 import GuestRoute from "./routes/guestRoute";
 import AdminRoute from "./routes/adminRoute";
@@ -20,16 +20,16 @@ import Home from "./Components/Home/home";
 import Footer from "./Components/Footer";
 import Restaurant from "./Components/Restaurant/restaurant";
 
-import { ChakraProvider } from '@chakra-ui/react'
-
 function App() {
 	const dispatch = useDispatch()
+	const userReducer = useSelector(state => state.userReducer)
+	const [loading, setLoading] = useState(false)
 
 	// Add routes to this object
 	const routes = {
 		'/home': <Home />,
-		'/home/:restaurant_id': <Header />,
-		'/home/:restaurant_id/menu': <Header />,
+		'/restaurant/:restaurant_id': <Restaurant />,
+		'/restaurant/:restaurant_id/menu': <Header />,
 		'/profile': <Profile />
 	}
 	const guestRoutes = {
@@ -40,47 +40,54 @@ function App() {
 	}
 
     useEffect(() => {
-        let tempUser = getFromLocalStorage("user")
-        if (tempUser) {
-            setSessionStorage(tempUser)
-            dispatch(actions.handleAddUserData(JSON.parse(tempUser)))
-        } else {
-            localStorage.clear()
-            sessionStorage.clear()
-        }
-    }, [])
+		if (!Object.keys(userReducer).length) {
+			let tempUser = getFromLocalStorage('user')
+			console.log(getFromLocalStorage("user"))
+			if (tempUser) {
+				setSessionStorage(tempUser)
+			} else {
+				tempUser = getFromSessionStorage('user')
+				localStorage.clear()
+			}
+			if (tempUser) {
+				dispatch(actions.handleAddUserData(JSON.parse(tempUser)))
+			}
+		}
+    }, [userReducer])
 
 	return (
-		<ChakraProvider>
 		<div className="App">
-			<Router>
-				<Header />
-				<main>
-					<Routes>
-						{
-							(Object.keys(guestRoutes) ?? []).map((ele, idx) => 
-								<Route exact path={ele} key={idx} element={<GuestRoute />}>
-									<Route exact path={ele} key={idx} element={guestRoutes[ele] || undefined} />
-								</Route>
-							)
-						}
-						{
-							(Object.keys(routes) ?? []).map((ele, idx) => 
-								<Route exact path={ele} key={idx} element={<AdminRoute />}>
-									<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
-								</Route>
-							)
-						}
-						<Route path="/restaurant/:placeId" element={<Restaurant />} />
-						<Route path="/home" element = {<Home />} />
-						<Route path="*" element={<PageNotFound />} />
-					</Routes>
-				</main>
-				<Footer />
-			</Router>
+			{
+				loading
+				? <></>
+				: (
+					<Router>
+						<Header />
+						<main>
+							<Routes>
+								{
+									(Object.keys(guestRoutes) ?? []).map((ele, idx) =>
+										<Route exact path={ele} key={idx} element={<GuestRoute />}>
+											<Route exact path={ele} key={idx} element={guestRoutes[ele] || undefined} />
+										</Route>
+									)
+								}
+								{
+									(Object.keys(routes) ?? []).map((ele, idx) =>
+										<Route exact path={ele} key={idx} element={<AdminRoute />}>
+											<Route exact path={ele} key={idx} element={routes[ele] || undefined} />
+										</Route>
+									)
+								}
+								<Route path="*" element={<PageNotFound />} />
+							</Routes>
+						</main>
+						<Footer />
+					</Router>
+				)
+			}
 			<CustomToastify />
 		</div>
-		</ChakraProvider>
 	);
 }
 

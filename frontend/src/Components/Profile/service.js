@@ -1,9 +1,9 @@
-import { getErrorMessage } from "../../Common/common"
-import userAxios from "../../service/userService"
+import { getErrorMessage } from '../../Common/common'
+import restaurantAxios from '../../service/restaurantService'
 
-export const handleLogin = (data) => {
+export const addMenuItem = (data) => {
     return new Promise(async (resolve, reject) => {
-        await userAxios.post("/getUser", data)
+        await restaurantAxios.post("/addMenuItem", data)
             .then(res => {
                 resolve(res.data)
             })

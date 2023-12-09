@@ -6,7 +6,7 @@ const newUser = async (req, res) => {
         ...req.body
     });
     
-    // Svaing user
+    // Saving user
     await user.save()
         .then(response => {
             res.status(200).json({"message": `User ${response.email} created successfully`, "data": response});

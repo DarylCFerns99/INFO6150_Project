@@ -1,3 +1,4 @@
+import { getErrorMessage } from "../../Common/common"
 import userAxios from "../../service/userService"
 
 export const handleRegister = (data) => {
@@ -7,7 +8,7 @@ export const handleRegister = (data) => {
                 resolve(res.data)
             })
             .catch(err => {
-                reject(err?.response?.data ? err.response.data : err)
+                reject(getErrorMessage(err))
             })
     })
 }

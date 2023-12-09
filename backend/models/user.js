@@ -11,8 +11,8 @@ const validationsRegexp = {
     confirmPassword: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%#*?&]{8,}$/,
     phoneNumber: /^\d{3}-?\d{3}-?\d{4}$/,
     zipCode: /\d{5}/,
-    address1: /^[\w,./ ]+$/,
-    address2: /^[\w,./ ]*$/,
+    address1: /^[\w,./\- ]+$/,
+    address2: /^[\w,./\- ]*$/,
     city: /^([A-Z][a-z]+\s?)+$/,
     state: /^[A-Z]{2}$/,
     country: /^([A-Z][a-z]+\s?)+$/

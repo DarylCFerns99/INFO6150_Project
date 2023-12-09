@@ -5,11 +5,16 @@ export const handleAddUserData = (payload) => ({
     payload
 })
 
-export const handleLogout = () => ({
-    type: actions.LOGOUT
-})
-
 export const handleSelectRestaurant = (restaurant) => ({
     type: actions.SELECT_RESTAUARANT,
     payload : restaurant
+})
+
+export const handleAddMenuItem = (payload) => ({
+    type: actions.ADD_MENU_ITEM,
+    payload
+})
+
+export const handleLogout = () => ({
+    type: actions.LOGOUT
 })

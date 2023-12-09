@@ -137,7 +137,7 @@ const initialState = {
         {
            data
         }
-    ]
+    ],
 }
 
 const restaurantsReducers = (state = initialState, action) => {
