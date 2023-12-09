@@ -5,8 +5,8 @@ const { MongoMemoryServer } = require("mongodb-memory-server")
 dotenv.config();
 
 const connect = async () => {
-    const connectionString = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/";
-    const database = process.env.DATABASE || "test";
+    const connectionString = process.env.MONGODB_URI || "";
+    const database = process.env.DATABASE || "";
 
     const mongoServer = await MongoMemoryServer.create()
     const mongoUri = mongoServer.getUri()

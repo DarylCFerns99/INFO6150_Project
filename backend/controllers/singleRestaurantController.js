@@ -9,7 +9,6 @@ const getRestaurantByPlaceId = router.get(
   async (req, res) => {
     try {
       const { placeId } = req.params;
-       console.log(placeId);
       // Find a single restaurant based on the provided placeId
       const result = await Restaurant.findOne({ place_id: placeId });
 

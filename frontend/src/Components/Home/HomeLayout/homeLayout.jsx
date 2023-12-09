@@ -51,7 +51,7 @@ const HomeLayout = ({ type }) => {
 
     return (
         <div>
-            <SimpleGrid columns={{ sm: 1, md: 3, lg: 4 }} spacing={10} justifyItems="center">
+            <SimpleGrid columns={{ sm: 2, md: 4, lg: 5 }} spacing={10} justifyItems="center">
                 {data &&
                     data.map((item) => (
                         <Link to={`/restaurant/${item.place_id}`}>
