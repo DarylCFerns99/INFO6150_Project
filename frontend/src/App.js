@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import * as actions from "./redux/actions"
 import { CustomToastify } from "./Common/";
 import { getFromLocalStorage, getFromSessionStorage, setSessionStorage } from "./Common/common";
-
 import "./App.styles.css"
 
 import GuestRoute from "./routes/guestRoute";
