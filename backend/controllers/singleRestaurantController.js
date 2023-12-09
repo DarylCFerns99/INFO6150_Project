@@ -42,16 +42,18 @@ const getRestaurantViolations = router.get(
         },
         {
           $group: {
-            _id: "$violdttm",
+            _id: {
+              $substr: ["$violdttm", 0, 10],
+            },
             violdttm: {
               $push: {
                 licenseno: "$licenseno",
-                businessname: "$businessname",
-                violevel: "$violevel",
-                violation: "$violation",
-                violdesc: "$violdesc",
-                comments: "$comments",
-                violstatus: "$violstatus",
+                name: "$businessname",
+                severity: "$viollevel",
+                code: "$violation",
+                heading: "$violdesc",
+                description: "$comments",
+                status: "$violstatus",
               },
             },
           },
