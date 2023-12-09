@@ -1,10 +1,10 @@
 import React from "react"
 import { Navigate, Outlet  } from "react-router-dom"
 
-import { getFromSessionStorage } from "../Common/common"
+import { getFromLocalStorage } from "../Common/common"
 
 const AdminRoute = () => {
-    const registered = getFromSessionStorage('user') ? true : false
+    const registered = getFromLocalStorage('name') ? true : false
     
 	return registered ? <Outlet /> : <Navigate to="/login" />
 }

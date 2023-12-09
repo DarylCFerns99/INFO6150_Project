@@ -5,7 +5,7 @@ import { Card,  CardBody, CardFooter, Image, Stack, Heading, Text, Divider,
 ButtonGroup, Button, Flex } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react';
 
-const mapCard = ({phoneNumber, mapLink}) => {
+const mapCard = ({phoneNumber, mapLink, address, website}) => {
     const location = {
         address: '1600 Amphitheatre Parkway, Mountain View, california.',
         lat: 37.42216,
@@ -34,7 +34,10 @@ const mapCard = ({phoneNumber, mapLink}) => {
                 />
                 </Link>
                 <Stack mt='6' spacing='3'>
-                <Text fonstSize='2xl' color='rgb(164, 164, 164)'>19 Perrin St, Boston</Text>
+                <Text fonstSize='2xl' color='rgb(164, 164, 164)'>{address}</Text>
+                <Link color='teal.500' href={website} isExternal>
+                <Text fonstSize='2xl'>Website</Text>
+                </Link>
                 </Stack>
             </CardBody>
             <Divider />
@@ -45,10 +48,12 @@ const mapCard = ({phoneNumber, mapLink}) => {
                         <FontAwesomeIcon icon={faCopy} /> &nbsp;{' '}
                         <span style={{ color: 'black', fontWeight: '300' }}>Copy</span>
                     </Button>
+                    <Link href={mapLink} isExternal>
                     <Button colorScheme="grey" variant="outline">
                         <FontAwesomeIcon icon={faDiamondTurnRight} style={{color : "#C53030"}}/> &nbsp;{' '}
                         <span style={{ color: 'black', fontWeight: '300' }}>Direction</span>
                     </Button>
+                    </Link>
                     </ButtonGroup>
                 </Flex>
             </CardFooter>

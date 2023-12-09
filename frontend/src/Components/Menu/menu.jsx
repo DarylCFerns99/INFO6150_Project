@@ -40,7 +40,7 @@ const photos = [
 //todo 
 //string , number or loose coupled key validation
 
-const Menu = () => {
+const Menu = ({ iconFlag=false }) => {
     const navigate = useNavigate();
     const { restaurant_id } = useParams(); //useParams hook to grab the resto id
     const dispatch = useDispatch();
@@ -53,8 +53,7 @@ const Menu = () => {
         //check for valid resto id in if loop 
         await fetchMenu(restaurant_id)
             .then((res) => {
-                dispatch(actions.handleAddMenuData(res));
-                
+                dispatch(actions.handleAddMenuData(res));           
             })
             .catch((err) => {
                 console.log(err);
@@ -110,7 +109,7 @@ const Menu = () => {
                   {menuData[heading].map((key, index) => (
                     <div key={`${idx}${index}`} className="hover-shadow">
                       <hr />
-                      <MenuCard props = {key} iconFlag = {true} />
+                      <MenuCard props = {key} iconFlag = {iconFlag} />
                       <hr />
                     </div>
                   ))}
@@ -120,15 +119,18 @@ const Menu = () => {
           </MDBRow>
         </MDBContainer>
 
-        <button 
-          style={{bottom: "55px", left:"50%", backgroundColor: "rgba(255,255,255, 0.9)" ,transform: "translate(-50%, -50%)"}}
-          onClick={() => navigate(`/home/${restaurant_id}/checkout`)}
-          className="btn btn-outline-primary btn-lg btn-rounded position-sticky"
-        >
-          <MDBIcon fas icon="shopping-cart" />
-          <span className='m-1'>  Checkout </span>
-          <span className="p-1">({sumValues ?? 0})</span>
-        </button>
+{
+  iconFlag &&
+    <button 
+      style={{bottom: "55px", left:"50%", backgroundColor: "rgba(255,255,255, 0.9)" ,transform: "translate(-50%, -50%)"}}
+      onClick={() => navigate(`/home/${restaurant_id}/checkout`)}
+      className="btn btn-outline-primary btn-lg btn-rounded position-sticky"
+    >
+      <MDBIcon fas icon="shopping-cart" />
+      <span className='m-1'>  Checkout </span>
+      <span className="p-1">({sumValues ?? 0})</span>
+    </button>
+}
       </div>
     );
 }

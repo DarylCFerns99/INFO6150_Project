@@ -1,8 +1,9 @@
 import * as actions from "../actions/actionTypes"
 
-const restaurantReducer = (state = {}, action) => {
+const initialState ={};
+const sampleReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actions.SELECT_RESTAUARANT: {
+        case actions.ADD_CURRENT_WEATHER_DATA: {
             return ({
                 ...(action?.payload ?? {})
             })
@@ -12,4 +13,4 @@ const restaurantReducer = (state = {}, action) => {
     }
 }
 
-export default restaurantReducer
+export default sampleReducer

@@ -14,7 +14,6 @@ const ReviewsDisplay = () => {
 
     const handleFetchReviews = async() => {
       //check for valid resto id in if loop 
-      console.log("dsadasd",userReducer.isUser)
       await getReviews(!userReducer.isUser ? {restaurant_id : userReducer.restaurant_id} : {user_id : userReducer._id} )
           .then((res) => {
               dispatch(actions.handleGetReviews(res));       

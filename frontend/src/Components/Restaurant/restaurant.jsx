@@ -19,7 +19,7 @@ const Restaurant = () => {
     const restaurant_data = useSelector(state => state.restaurantReducer);
     console.log("ddddddd" + restaurant_data);
     const { name, address, rating, reviews, opening_hours, map_link,
-        curbside_pickup, delivery, dine_in, takeout, reservable, photos, phone_number } = restaurant_data;
+        curbside_pickup, delivery, dine_in, takeout, reservable, photos, phone_number, licenseno, website} = restaurant_data;
     const optionsData = { curbside_pickup, delivery, dine_in, takeout, reservable }
     const openingHours = opening_hours?.weekday_text;
     const photosReference = photos?.slice(0, 4).map(e => `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${e.photo_reference}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
@@ -31,7 +31,7 @@ const Restaurant = () => {
         console.log("hii");
         const fetchData = async () => {
             try {
-                let host = process.env.REACT_APP_API_URL
+                const host = process.env.REACT_APP_API_URL
                 const response = await axios.get(
                     `${host}restaurant/${restaurant_id}`
                 );
@@ -101,7 +101,7 @@ const Restaurant = () => {
                         </Button>
                     </span>
                 </div>
-                <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link}/>
+                <TabOptions googleRevs={reviews} openingHours={openingHours} optionsData={optionsData} phoneNumber={phone_number} mapLink={map_link} licenseno={licenseno} placeId={restaurant_id} address={address} website={website}/>
                 
             </div>
         </ChakraProvider>
