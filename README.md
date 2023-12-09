@@ -1,32 +1,19 @@
 # INFO6150_Project
 <h3>SafeDine:Restaurant Safety Companion</h3>
-<p>The goal of this webpage is to provide the user with the health code violations data of the restaurant. Every restaurant goes through multiple health checks, as a result of these checks the restaurants are then provided with a detailed inspection violations. This website will help a user by providing those information at a glance.</p>
+<p>The goal of this webpage is to provide the user with the health code violations data of the restaurants. The web app will also contain menu for each restaurant which will allow users to add items to cart. There is also a User review section which allows users to post comments and restaurant owners to respond to these review. The web app is also integrated with Google Places API allowing users to access restaurant information such as dine-in, delivery options, open hours, directions etc.. .</p>
 
 <h3>Instructions to run the web app</h3>
-<p>Open index.html in vscode. Use the go live extension on vscode to run the web app.  </p>
+<p></p>
 
 <h3>Team members and their role:</h3>
 <ol>
     <li>
         <h3>Jovin Nicholas (002822737)</h3>
-        <p>Worked on developing the home page of the webpage</p>
-        <ul>
-            <li><strong>Grid</strong> - Used to display the search</li>
-            <li><strong>Tabs</strong> - Used to display multiple tabs for dine in, takeout and groceries</li>
-            <li><strong>Image</strong> - Used to display images on card layout</li>
-            <li><strong>Badge</strong> - Used to display safety rating and customer review</li>
-        </ul>
+        <p>Worked on developing the restaurants list page of the webpage and Google API integration</p>
     </li>
     <li>
         <h3>Abhishek Unnithan (002839036)</h3>
-        <p>Worked on developing the map, description page of the webpage</p>
-        <ul>
-            <li><strong>Accordion</strong> - Used to display various violations by the restaurant, and detailed violation on expandsion</li>
-            <li><strong>Maps</strong> - Used to display the location of restaurants on a map</li>
-            <li><strong>Form</strong> - Used to wrap the search and the search button component</li>
-            <li><strong>Search</strong> - Used to create an input field for filtering the restaurants</li>
-            <li><strong>ProgressBar</strong> - Used to create the review section bar for the reviews</li>
-        </ul>
+        <p>Worked on developing the restaurant page and integration with violation data from Analyze Boston endpoint</p>
     </li>
     <li>
         <h3>Anirudha Dudhasagare (002697516)</h3>
